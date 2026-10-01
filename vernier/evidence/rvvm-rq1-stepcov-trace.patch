@@ -1,0 +1,129 @@
+diff --git a/src/core/gdbstub.c b/src/core/gdbstub.c
+--- a/src/core/gdbstub.c
++++ b/src/core/gdbstub.c
+@@
+ */
++#include <stdlib.h>
+
+ #include <util/networking.h>
+@@
+ static void gdbstub_pause(gdb_server_t* server)
+ {
+     spin_unlock(&server->lock);
+     vector_foreach (server->machine->harts, i) {
+         rvvm_hart_t* vm = vector_at(server->machine->harts, i);
+-        riscv_hart_pause(vm);
++        if (vm->thread) {
++            riscv_hart_pause(vm);
++        }
+     }
+@@
+ static void gdb_handle_q(gdb_client_t* gdb, const char* packet, size_t size)
+ {
+     UNUSED(size);
+-    if (rvvm_strfind(packet, "qfThreadInfo")) {
++    if (rvvm_strfind(packet, "qRQ1SingleStep")) {
++        gdb_reply_str(gdb, "OK");
++    } else if (rvvm_strfind(packet, "qfThreadInfo")) {
+@@
+     switch (packet[0]) {
+         case 's': // Step
++            riscv_hart_step(gdb->hart);
++            gdb_halt_reason(gdb);
++            return;
+         case 'c': // Continue
+@@
+         case 'q': // Query information
+             gdb_handle_q(gdb, packet, size);
+             return;
++        case 'k': // Kill
++            exit(0);
+         case 'R': // Reset
+             rvvm_reset_machine(gdb->server->machine, true);
+             gdb_reply_str(gdb, "OK");
+             return;
+diff --git a/src/core/rvvm.c b/src/core/rvvm.c
+--- a/src/core/rvvm.c
++++ b/src/core/rvvm.c
+@@
+             vector_foreach (machine->harts, i) {
+                 riscv_hart_prepare(vector_at(machine->harts, i));
+             }
+-            vector_foreach (machine->harts, i) {
+-                riscv_hart_spawn(vector_at(machine->harts, i));
+-            }
++            if (!rvvm_has_arg("rq1-stepcov")) {
++                vector_foreach (machine->harts, i) {
++                    riscv_hart_spawn(vector_at(machine->harts, i));
++                }
++            }
+diff --git a/src/cpu/riscv_hart.c b/src/cpu/riscv_hart.c
+--- a/src/cpu/riscv_hart.c
++++ b/src/cpu/riscv_hart.c
+@@
+ #include <rvvm/rvvm.h>
++#include <stdio.h>
+@@
+ void riscv_hart_pause(rvvm_hart_t* vm)
+ {
+     riscv_hart_queue_pause(vm);
+     thread_join(vm->thread);
+     vm->thread = NULL;
+ }
++
++void riscv_hart_step(rvvm_hart_t* vm)
++{
++    atomic_store_uint32_ex(&vm->running, false, ATOMIC_RELAXED);
++    riscv_run_till_event(vm);
++    if (vm->trap) {
++        vm->registers[RISCV_REG_PC] = vm->trap_pc;
++        vm->trap = false;
++    }
++}
++
++void rq1_trace_instruction(rvvm_addr_t pc)
++{
++    static FILE* trace;
++    static bool attempted;
++    if (attempted) {
++        if (trace) {
++            fprintf(trace, "INS 0x%llx\n", (unsigned long long)pc);
++            fflush(trace);
++        }
++        return;
++    }
++    attempted = true;
++    const char* path = rvvm_getarg("rq1-trace");
++    if (!path || !*path) {
++        return;
++    }
++    trace = fopen(path, "wb");
++    if (!trace) {
++        rvvm_warn("Failed to open RQ1 trace %s", path);
++        return;
++    }
++    setvbuf(trace, NULL, _IOLBF, 0);
++    fprintf(trace, "INS 0x%llx\n", (unsigned long long)pc);
++    fflush(trace);
++}
+diff --git a/src/cpu/riscv_hart.h b/src/cpu/riscv_hart.h
+--- a/src/cpu/riscv_hart.h
++++ b/src/cpu/riscv_hart.h
+@@
+ // Pauses hart in a consistent state, terminates vCPU thread
+ void riscv_hart_pause(rvvm_hart_t* vm);
++// Executes exactly one guest instruction while the hart is paused
++void riscv_hart_step(rvvm_hart_t* vm);
++// Writes one guest PC to the optional RQ1 trace stream.
++void rq1_trace_instruction(rvvm_addr_t pc);
+diff --git a/src/cpu/riscv_interpreter.h b/src/cpu/riscv_interpreter.h
+--- a/src/cpu/riscv_interpreter.h
++++ b/src/cpu/riscv_interpreter.h
+@@
+         // Implicitly zero x0 register each time
+         vm->registers[RISCV_REG_ZERO] = 0;
+
++        rq1_trace_instruction(insn_addr);
+         riscv_emulate_insn(vm, insn);
+     } while (likely(vm->running));
+}

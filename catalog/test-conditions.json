@@ -1,0 +1,145 @@
+{
+  "dimensions": [
+    {
+      "id": "isa_profile",
+      "values": "canonical RISC-V profile carried by TestCase.isa_profile"
+    },
+    {
+      "id": "expected_path",
+      "values": [
+        "either",
+        "interpreter",
+        "translated",
+        "trap"
+      ]
+    },
+    {
+      "id": "artifact_shape",
+      "values": [
+        "linux-user-elf",
+        "bare-metal-elf",
+        "capsule-elf"
+      ]
+    },
+    {
+      "id": "termination",
+      "values": [
+        "complete_observation",
+        "trap",
+        "nonzero-exit",
+        "timeout",
+        "case-skipped",
+        "artifact-gap",
+        "transport-gap"
+      ]
+    },
+    {
+      "id": "coverage",
+      "values": [
+        "function",
+        "line",
+        "branch",
+        "generated-instruction",
+        "executed-instruction",
+        "opcode",
+        "pc"
+      ]
+    },
+    {
+      "id": "observation",
+      "values": [
+        "outcome",
+        "checkpoint_pc",
+        "gpr",
+        "memory.test-memory",
+        "signal",
+        "fault_pc",
+        "fault_address",
+        "extra_state"
+      ]
+    },
+    {
+      "id": "generation_stage",
+      "values": [
+        "root",
+        "small-model",
+        "EMI",
+        "MCMC",
+        "candidate"
+      ]
+    }
+  ],
+  "methods": [
+    "B-RVDV",
+    "B-TORTURE",
+    "B-CSMITH",
+    "B-GEMI",
+    "Fuzz4All",
+    "Ours-RVGEN-Direct",
+    "Ours-Program-Full"
+  ],
+  "per_test_record_requirements": [
+    "case_id",
+    "method",
+    "target",
+    "artifact_sha256",
+    "target_identity",
+    "observation",
+    "coverage_profile_reference",
+    "instruction_trace_reference",
+    "execution_status"
+  ],
+  "schema": "vernier-test-condition-catalog-v1",
+  "source": "experiments/rq1/comparison/config/rq1-comparison-isolated-v1.json and framework/direct_case.py",
+  "targets": [
+    {
+      "collector": "gcov",
+      "emulator": "qemu",
+      "execution_model": "linux-user",
+      "id": "T-QEMU",
+      "translation_mode": null
+    },
+    {
+      "collector": "gcov",
+      "emulator": "libriscv",
+      "execution_model": "linux-user-interpreter",
+      "id": "T-LRSV-INT",
+      "translation_mode": null
+    },
+    {
+      "collector": "gcov",
+      "emulator": "libriscv",
+      "execution_model": "linux-user-translated",
+      "id": "T-LRSV-TRANS",
+      "translation_mode": null
+    },
+    {
+      "collector": "gcov",
+      "emulator": "unicorn",
+      "execution_model": "bare-metal-capsule",
+      "id": "T-UNICORN",
+      "translation_mode": null
+    },
+    {
+      "collector": "dotnet",
+      "emulator": "renode",
+      "execution_model": "system-bare-metal",
+      "id": "T-RENODE",
+      "translation_mode": null
+    },
+    {
+      "collector": "llvm",
+      "emulator": "rax",
+      "execution_model": "emulator-bare-metal",
+      "id": "T-RAX",
+      "translation_mode": null
+    },
+    {
+      "collector": "gcov",
+      "emulator": "rvvm",
+      "execution_model": "vm-interpreter-bare-metal",
+      "id": "T-RVVM",
+      "translation_mode": "interpreter"
+    }
+  ]
+}

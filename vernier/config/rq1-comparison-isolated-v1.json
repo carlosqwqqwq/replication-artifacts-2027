@@ -1,0 +1,1120 @@
+{
+  "schema_version": "rq1-comparison-isolated-v1",
+  "experiment": "RQ1",
+  "experiment_seed": 303,
+  "rv_instruction_coverage": {
+    "schema_version": "rq1-rv-instruction-coverage-contract-v1",
+    "enabled": false,
+    "role": "diagnostic-only",
+    "isa_profile": "rv64imc_zicsr_zifencei",
+    "privilege_mode": "user",
+    "xlen": 64,
+    "form_denominator": 105,
+    "opcode_denominator": 91,
+    "catalog": "riscv-opcodes@aeb94df5dd272d1893d43af270dd8d1b2fef699b",
+    "decoder": "riscv-opcodes-aeb94df-coverage-v4"
+  },
+  "rv_opcode_catalog_coverage": {
+    "schema_version": "rq1-rv-opcode-catalog-coverage-contract-v1",
+    "enabled": true,
+    "catalog": "riscv-opcodes@aeb94df5dd272d1893d43af270dd8d1b2fef699b+rq1-local-overlay-v1",
+    "key_schema": "full-fixed-mask-match-v1",
+    "registry_sha256": "e09d6c48de96484d23652548933e54763f242978ca0c82a20b72037e961e54e3",
+    "form_count": 1485,
+    "opcode_denominator": 1480,
+    "partition_denominators": {
+      "ratified": 869,
+      "experimental-unratified": 605,
+      "local-vendor-overlay": 6
+    },
+    "aggregation": "method-generated-and-method-target-unique-set-union"
+  },
+  "execution_policy": {
+    "coverage_enabled": true,
+    "target_worker_count": 7,
+    "network": "bridge",
+    "resource_limits": {
+      "cpus": 18.0,
+      "memory": "96g",
+      "memory_swap": "96g",
+      "pids": 1024
+    },
+    "resource_profiles": {
+    "single-method": {
+      "parallel_containers": 1,
+      "minimum_limits": {
+        "cpus": 1.0,
+        "memory": "1g"
+        },
+        "tmpfs": {
+        "/tmp": "8g"
+      }
+    },
+    "two-method-parallel": {
+      "parallel_containers": 2,
+      "minimum_limits": {
+        "cpus": 1.0,
+        "memory": "4g"
+      },
+      "limits": {
+        "cpus": 8.0,
+        "memory": "40g",
+        "memory_swap": "40g"
+      },
+      "tmpfs": {
+        "/tmp": "8g"
+      }
+    },
+    "four-method-parallel": {
+      "parallel_containers": 4,
+      "minimum_limits": {
+        "cpus": 1.0,
+        "memory": "4g"
+      },
+      "limits": {
+        "cpus": 8.0,
+        "memory": "40g",
+        "memory_swap": "40g"
+      },
+      "tmpfs": {
+        "/tmp": "8g"
+      }
+    },
+    "seven-method-parallel": {
+        "parallel_containers": 7,
+        "minimum_limits": {
+          "cpus": 1.0,
+          "memory": "4g"
+        },
+        "tmpfs": {
+          "/tmp": "4g"
+        }
+      },
+      "rvgen_catalog_72h": {
+        "mode": "rvgen-catalog-72h",
+        "parallel_containers": 1,
+        "simultaneous_simulator_processes": 15,
+        "limits": {
+          "cpus": 2.0,
+          "memory": "14g",
+          "memory_swap": "14g",
+          "pids": 512
+        },
+        "tmpfs": {
+          "/tmp": "2g"
+        }
+      }
+    },
+    "container_image": "migration-rq1-compare-jdk17:rq1-comparison",
+    "container_image_digest": "sha256:37c02237f269f45e6fc299c414ee17970ed6d115872b278d3842f112f1d227b3",
+    "coverage_container_image": "local/rq1-simulator-coverage-build:ubuntu24.04-v4",
+    "coverage_container_image_digest": "sha256:e10131b417c6da4e5fb147d5abd61c1a75d7a80adbbaade498cd2c1e7120be67"
+  },
+  "lane": {
+    "id": "rq1-comparison-tool-profile-v1",
+    "role": "metadata-fallback-only",
+    "isa": "rv64i",
+    "mabi": "lp64",
+    "linux_user_contract": "RQ1-LINUX-USER-PROBE-v1",
+    "bare_metal_contract": "RQ1-BARE-METAL-PROBE-v1",
+    "strata": {
+      "linux-user": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS"
+      ],
+      "bare-metal": [
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    }
+  },
+  "limits": {
+    "target_timeout_seconds": 180
+  },
+  "board_differential": {
+    "coverage": "linux-user-only"
+  },
+  "applicability": {
+    "B-RVDV": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    },
+    "B-TORTURE": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    },
+    "B-CSMITH": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    },
+    "B-GEMI": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    },
+    "Ours-RVGEN-Direct": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    },
+    "Ours-Program-Full": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    },
+    "Fuzz4All": {
+      "strata": [
+        "bare-metal",
+        "linux-user"
+      ],
+      "targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ]
+    }
+  },
+  "dependencies": {
+    "riscv_dv": "external/testing-framework-references/riscv-dv",
+    "torture": "external/formal-git/riscv-torture",
+    "csmith": "toolchains/csmith-0cdc7103/bin/csmith",
+    "decfuzzer": "external/formal-git/decfuzzer",
+    "fuzz4all": "external/fuzz4all",
+    "dotnet": "toolchains/dotnet-8/dotnet",
+    "renode": "target-store/renode-riscv64/121ab9bfe972600cfcbb5fed4941260db5725099f3332c74459690784002b859/Renode.dll",
+    "rax": "target-store/rax-riscv64/f3e6e690d7dd10ce1fe23a2093080c2f3225eb34acee34a7826265a62d8254e1/rax"
+  },
+  "dependency_pins": {
+    "fuzz4all": {
+      "kind": "git",
+      "path": "external/fuzz4all",
+      "commit": "0bf42fe037c8761bdde61e1c37a0946e8103fba1"
+    },
+    "riscv_dv": {
+      "kind": "git",
+      "path": "external/testing-framework-references/riscv-dv",
+      "commit": "dc9f0b9d4e2db025215eba314074ba10a7ab3ea6",
+      "commit_date": "2026-09-15"
+    },
+    "torture": {
+      "kind": "git",
+      "path": "external/formal-git/riscv-torture",
+      "commit": "7c37f5ab454562cf076c8ff07b108b1b55f17250",
+      "commit_date": "2024-07-11"
+    },
+    "decfuzzer": {
+      "kind": "git",
+      "path": "external/formal-git/decfuzzer",
+      "commit": "8e109c12d499df0223430ae17f71aac3109bd1f6",
+      "commit_date": "2020-04-23"
+    },
+    "csmith": {
+      "kind": "binary",
+      "path": "toolchains/csmith-0cdc7103/bin/csmith",
+      "version": "2.4.0",
+      "binary_sha256": "1b57a19a9064fbc2d2a732d9a35901abcee9095bb728362c4f3b5f05eb0bb122"
+    }
+  },
+  "references": {
+    "bare-metal": {
+      "id": "R-K1-BOARD",
+      "engine": "k1-board",
+      "backend": "native-rv64",
+      "target": "T-K1-BOARD",
+      "execution_model": "bare-metal",
+      "status": "gap",
+      "reason": "board-runs-linux-user-elf-only"
+    },
+    "linux-user": {
+      "id": "R-K1-BOARD",
+      "engine": "k1-board",
+      "backend": "native-rv64",
+      "target": "T-K1-BOARD",
+      "runner_path": "framework/native/rv64_runner.py",
+      "ssh_config": "/path/to/ssh/config",
+      "known_hosts": "/path/to/user/.ssh/known_hosts",
+      "ssh_alias": "k1-board",
+      "remote_root": "/mnt/build/wangyang/runs/<run-id>",
+      "execution_model": "ssh-linux-user"
+    }
+  },
+  "targets": [
+    {
+      "id": "T-QEMU",
+      "kind": "qemu",
+      "supported_isa_widths": [
+        64
+      ],
+      "execution_model": "linux-user",
+      "commit": "e545d8bb9d63e9dd61542b88463183314cff9482",
+      "commit_date": "2026-06-25",
+      "binary_sha256": "ac054acce1c09aebc2aa8e6cf0ecd4f0b900abb0628213d7efcb0c6c6aea16b8",
+      "coverage_binary_sha256": "39d6a9cb81093ee40a79ec133f9449ebe9ee4fcd73ca3a71af50f1a224adcc2f",
+      "identity_digest": "18d3e5c741c6f7b1d17ef7b3a8101b3d85777095871d34e97f0456d7ebe14a52",
+      "binary": "target-store/qemu-riscv64/18d3e5c741c6f7b1d17ef7b3a8101b3d85777095871d34e97f0456d7ebe14a52/qemu-riscv64",
+      "coverage_binary": "simulator-coverage-artifacts/T-QEMU/qemu-riscv64",
+      "identity": "target-store/qemu-riscv64/18d3e5c741c6f7b1d17ef7b3a8101b3d85777095871d34e97f0456d7ebe14a52/target-identity.json",
+      "probe_command": [
+        "{binary}",
+        "{user_elf}"
+      ],
+      "simulator_coverage": {
+        "adapter": "qemu-instruction-pc",
+        "plugin": "simulator-coverage-builds/T-QEMU-v2/contrib/plugins/libexeclog.so"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "gcov",
+        "source_root": "/path/to/deps/simulator-coverage-sources/qemu-e545",
+        "build_root": "/path/to/deps/simulator-coverage-builds/T-QEMU-v2",
+        "profile": "coverage-profiles/T-QEMU/lcov.info",
+        "identity": "coverage-profiles/T-QEMU/identity.json",
+        "source_repository": "external/formal-git/qemu-e545",
+        "source_commit": "e545d8bb9d63e9dd61542b88463183314cff9482",
+        "source_scope": [
+          "qemu-e545"
+        ],
+        "toolchain": "gcc-gcov-or-llvm-cov",
+        "build_flags": [
+          "--target-list=riscv64-linux-user",
+          "--disable-system",
+          "--disable-docs",
+          "--disable-werror",
+          "--disable-vfio-user-server",
+          "--disable-vhost-user",
+          "--disable-libvduse",
+          "--enable-gcov",
+          "--extra-cflags=-O1 -g --coverage",
+          "--extra-ldflags=--coverage",
+          "Meson default CFLAGS suffix: -g -O2"
+        ],
+        "source_scope_exclude": [
+          "target/alpha",
+          "target/arm",
+          "target/avr",
+          "target/hexagon",
+          "target/hppa",
+          "target/i386",
+          "target/loongarch",
+          "target/m68k",
+          "target/microblaze",
+          "target/mips",
+          "target/or1k",
+          "target/ppc",
+          "target/rx",
+          "target/s390x",
+          "target/sh4",
+          "target/sparc",
+          "target/tricore",
+          "target/xtensa",
+          "ui",
+          "audio",
+          "hw/display",
+          "hw/audio",
+          "hw/usb",
+          "hw/scsi",
+          "hw/ide",
+          "hw/nvme",
+          "hw/9pfs",
+          "include/ui"
+        ]
+      }
+    },
+    {
+      "id": "T-LRSV-INT",
+      "kind": "libriscv",
+      "execution_model": "linux-user-interpreter",
+      "commit": "2a501bab10dca3b99370300049bd39d1098e8cd0",
+      "commit_date": "2026-06-24",
+      "binary_sha256": "e10962299f8668a459d804457ba55f2a58b1ae47d5e8251de4c9c7d9f247caae",
+      "coverage_binary_sha256": "04da412725aca888297552dba3678c507dfaabe41900e530973f922471087ce6",
+      "identity_digest": "02a5373a49e96326915c3ffd4db85d90ca9bd7899698d8f7ef4b8f540978b25a",
+      "binary": "target-store/libriscv-interpreter/02a5373a49e96326915c3ffd4db85d90ca9bd7899698d8f7ef4b8f540978b25a/rvlinux",
+      "coverage_binary": "simulator-coverage-artifacts/T-LRSV-INT/rvlinux",
+      "identity": "target-store/libriscv-interpreter/02a5373a49e96326915c3ffd4db85d90ca9bd7899698d8f7ef4b8f540978b25a/target-identity.json",
+      "probe_command": [
+        "{binary}",
+        "{user_elf}"
+      ],
+      "simulator_coverage": {
+        "adapter": "libriscv-debug-pc"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "gcov",
+        "source_root": "/path/to/deps/simulator-sources/libriscv",
+        "build_root": "/path/to/deps/simulator-coverage-builds/T-LRSV-v1",
+        "profile": "coverage-profiles/T-LRSV-INT/lcov.info",
+        "identity": "coverage-profiles/T-LRSV-INT/identity.json",
+        "source_repository": "external/binary-translation-tools/libriscv",
+        "source_commit": "2a501bab10dca3b99370300049bd39d1098e8cd0",
+        "source_scope": [
+          "libriscv"
+        ],
+        "toolchain": "gcc-gcov-or-llvm-cov",
+        "build_flags": [
+          "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+          "-DCMAKE_CXX_FLAGS=-O1 -g --coverage",
+          "CMake RelWithDebInfo defaults: -O2 -g -DNDEBUG",
+          "-DCMAKE_EXE_LINKER_FLAGS=--coverage",
+          "-DCMAKE_SHARED_LINKER_FLAGS=--coverage",
+          "-DRISCV_BINARY_TRANSLATION=ON",
+          "-DRISCV_DEBUG=OFF",
+          "-DRISCV_THREADED=ON"
+        ],
+        "source_scope_exclude": [
+          "emu128",
+          "tests",
+          "fuzz",
+          "examples",
+          "binaries",
+          "docs"
+        ]
+      }
+    },
+    {
+      "id": "T-LRSV-TRANS",
+      "kind": "libriscv",
+      "execution_model": "linux-user-translated",
+      "commit": "2a501bab10dca3b99370300049bd39d1098e8cd0",
+      "commit_date": "2026-06-24",
+      "binary_sha256": "3e15174dbb45aef3df1ae42cffbee9de8e72fa23ae54eed748428f9fc0cba094",
+      "coverage_binary_sha256": "04da412725aca888297552dba3678c507dfaabe41900e530973f922471087ce6",
+      "identity_digest": "0a39e13a44a3045d68e9727225dc871c91a77797b48d918abf857a18be155645",
+      "binary": "target-store/libriscv-translated/0a39e13a44a3045d68e9727225dc871c91a77797b48d918abf857a18be155645/rvlinux",
+      "coverage_binary": "simulator-coverage-artifacts/T-LRSV-TRANS/rvlinux",
+      "identity": "target-store/libriscv-translated/0a39e13a44a3045d68e9727225dc871c91a77797b48d918abf857a18be155645/target-identity.json",
+      "probe_command": [
+        "{binary}",
+        "{user_elf}"
+      ],
+      "simulator_coverage": {
+        "adapter": "libriscv-trace"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "gcov",
+        "source_root": "/path/to/deps/simulator-sources/libriscv",
+        "build_root": "/path/to/deps/simulator-coverage-builds/T-LRSV-v1",
+        "profile": "coverage-profiles/T-LRSV-TRANS/lcov.info",
+        "identity": "coverage-profiles/T-LRSV-TRANS/identity.json",
+        "source_repository": "calibration-builds/libriscv-translated/2a501bab10dca3b99370300049bd39d1098e8cd0/current-container-baseline/source",
+        "source_commit": "2a501bab10dca3b99370300049bd39d1098e8cd0",
+        "source_scope": [
+          "libriscv"
+        ],
+        "toolchain": "gcc-gcov-or-llvm-cov",
+        "build_flags": [
+          "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+          "-DCMAKE_CXX_FLAGS=-O1 -g --coverage",
+          "CMake RelWithDebInfo defaults: -O2 -g -DNDEBUG",
+          "-DCMAKE_EXE_LINKER_FLAGS=--coverage",
+          "-DCMAKE_SHARED_LINKER_FLAGS=--coverage",
+          "-DRISCV_BINARY_TRANSLATION=ON",
+          "-DRISCV_DEBUG=OFF",
+          "-DRISCV_THREADED=ON"
+        ],
+        "source_scope_exclude": [
+          "emu128",
+          "tests",
+          "fuzz",
+          "examples",
+          "binaries",
+          "docs"
+        ]
+      }
+    },
+    {
+      "id": "T-UNICORN",
+      "kind": "unicorn",
+      "supported_isa_widths": [
+        64
+      ],
+      "execution_model": "bare-metal-capsule",
+      "commit": "8028ec436f2d9376525352dd38ed9ed6b9f6be10",
+      "commit_date": "2025-09-09",
+      "binary_sha256": "e657a4a6af591b00e33b6909cba570f02c3447493f4ef00585f1d87c512d828d",
+      "coverage_binary_sha256": "557b9de127ab1d175e118fe1cbe40ae0245ee055cacbaf182d00776ff6e6bf4f",
+      "identity_digest": "d514382861e7d3efd38e745d1473939c33b942754c2d0f14a573062e7308561d",
+      "binary": "target-store/unicorn-riscv64/d514382861e7d3efd38e745d1473939c33b942754c2d0f14a573062e7308561d/libunicorn.so.2",
+      "coverage_binary": "simulator-coverage-artifacts/T-UNICORN/libunicorn.so.2",
+      "identity": "target-store/unicorn-riscv64/d514382861e7d3efd38e745d1473939c33b942754c2d0f14a573062e7308561d/target-identity.json",
+      "simulator_coverage": {
+        "adapter": "unicorn-hooks"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "gcov",
+        "source_root": "/path/to/deps/simulator-sources/unicorn",
+        "build_root": "/path/to/deps/simulator-coverage-builds/T-UNICORN",
+        "profile": "coverage-profiles/T-UNICORN/lcov.info",
+        "identity": "coverage-profiles/T-UNICORN/identity.json",
+        "source_repository": "external/formal-git/unicorn-8028",
+        "source_commit": "8028ec436f2d9376525352dd38ed9ed6b9f6be10",
+        "source_scope": [
+          "unicorn",
+          "unicorn-8028"
+        ],
+        "toolchain": "gcc-gcov-or-llvm-cov",
+        "build_flags": [
+          "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+          "-DCMAKE_C_FLAGS=-O1 -g --coverage",
+          "CMake RelWithDebInfo defaults: -O2 -g -DNDEBUG",
+          "-DCMAKE_EXE_LINKER_FLAGS=--coverage",
+          "-DCMAKE_SHARED_LINKER_FLAGS=--coverage",
+          "-DUNICORN_ARCH=riscv",
+          "-DBUILD_SHARED_LIBS=ON"
+        ],
+        "source_scope_exclude": [
+          "qemu/target/alpha",
+          "qemu/target/arm",
+          "qemu/target/avr",
+          "qemu/target/hexagon",
+          "qemu/target/hppa",
+          "qemu/target/i386",
+          "qemu/target/loongarch",
+          "qemu/target/m68k",
+          "qemu/target/microblaze",
+          "qemu/target/mips",
+          "qemu/target/or1k",
+          "qemu/target/ppc",
+          "qemu/target/rx",
+          "qemu/target/s390x",
+          "qemu/target/sh4",
+          "qemu/target/sparc",
+          "qemu/target/tricore",
+          "qemu/target/xtensa",
+          "bindings",
+          "samples",
+          "tests",
+          "msvc"
+        ]
+      }
+    },
+    {
+      "id": "T-RENODE",
+      "kind": "renode",
+      "supported_isa_widths": [
+        64
+      ],
+      "execution_model": "system-bare-metal",
+      "commit": "d66b0c2aa3d420408eccecfd1d3bab0fd702a6db",
+      "commit_date": "2026-02-16",
+      "binary_sha256": "938d16d7d45713e36550b53d358726900ff8793f2377525aa53301a20a513604",
+      "coverage_binary_sha256": "f8909abb94788ff6e886b3392042d630641a34b39b68a8793fd2c101062a811a",
+      "identity_digest": "121ab9bfe972600cfcbb5fed4941260db5725099f3332c74459690784002b859",
+      "binary": "target-store/renode-riscv64/121ab9bfe972600cfcbb5fed4941260db5725099f3332c74459690784002b859/Renode.dll",
+      "coverage_binary": "simulator-coverage-artifacts/T-RENODE/Renode.dll",
+      "identity": "target-store/renode-riscv64/121ab9bfe972600cfcbb5fed4941260db5725099f3332c74459690784002b859/target-identity.json",
+      "launcher": "toolchains/dotnet-8/dotnet",
+      "probe_command": [
+        "{launcher}",
+        "{binary}",
+        "--disable-gui",
+        "--plain",
+        "--console",
+        "{bm_elf}"
+      ],
+      "simulator_coverage": {
+        "adapter": "renode-hooks"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "dotnet",
+        "collector_input_format": "cobertura",
+        "source_root": "/path/to/deps/simulator-coverage-sources/renode-d66b-rq1",
+        "reportgenerator": "/path/to/deps/simulator-coverage-tools/reportgenerator/reportgenerator",
+        "launcher": "/path/to/deps/simulator-coverage-tools/dotnet-coverage/dotnet-coverage",
+        "profile": "coverage-profiles/T-RENODE/lcov.info",
+        "identity": "coverage-profiles/T-RENODE/identity.json",
+        "source_repository": "renode-d66b-rq1",
+        "source_commit": "d66b0c2aa3d420408eccecfd1d3bab0fd702a6db",
+        "source_scope": [
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Cores/RiscV",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Cores/Common",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Cores/Debug",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Peripherals/Peripherals/CPU",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Peripherals/Peripherals/Timers/RiscVMachineTimer.cs",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Backends",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Core",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Debug",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Exceptions",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Logging",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Peripherals",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Time",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/UserInterface",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Utilities",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Emulator.cs",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Extensions/Config",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Extensions/Hooks",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Extensions/UserInterface",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Extensions/Utilities/TypeExtensions.cs",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Extensions/Utilities/MonitorInfo.cs",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Extensions/Utilities/GDB",
+          "renode-d66b-rq1/src/Infrastructure/src/Emulator/Main/Plugins/PluginManager.cs",
+          "renode-d66b-rq1/src/Renode/EmulationEnvironment",
+          "renode-d66b-rq1/src/Renode/PlatformDescription",
+          "renode-d66b-rq1/src/Renode/Program.cs"
+        ],
+        "toolchain": "dotnet-coverage-cobertura-reportgenerator",
+        "build_flags": [
+          "dotnet build Renode_NET.sln -c Release -p:NET=true -p:GUI_DISABLED=true"
+        ],
+        "source_scope_exclude": [
+          "Tests",
+          "Test",
+          "tests",
+          "images",
+          "platforms",
+          "scripts",
+          "tools",
+          "ws-api",
+          "lib",
+          "output",
+          "src/Renode/UI",
+          "src/Renode/WebSockets",
+          "src/Infrastructure/src/UI",
+          "src/Infrastructure/src/Emulator/Cores/Arm",
+          "src/Infrastructure/src/Emulator/Cores/Arm-M",
+          "src/Infrastructure/src/Emulator/Cores/Arm64",
+          "src/Infrastructure/src/Emulator/Cores/KVM/X86",
+          "src/Infrastructure/src/Emulator/Cores/PowerPC",
+          "src/Infrastructure/src/Emulator/Cores/Sparc",
+          "src/Infrastructure/src/Emulator/Cores/X86",
+          "src/Infrastructure/src/Emulator/Cores/Xtensa",
+          "src/Infrastructure/src/Emulator/Cores/bin",
+          "src/Infrastructure/src/Emulator/Cores/obj",
+          "src/Infrastructure/src/Emulator/Peripherals/Peripherals/CPU/MSP430X",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/ATAPI",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/CAN",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/CFU",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/DMA",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/GPIOPort",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/I2C",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Input",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Miscellaneous",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Network",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/PCI",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Python",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/SENT",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/SPI",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Sensor",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/USB",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Video",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/Wireless",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/UART/ILIN.cs",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/UART/LINBase.cs",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/UART/LINHub.cs",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/UART/UARTRESDFeeder.cs",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/UART/VirtualConsole.cs",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/CPU/IArmWithSystemRegisters.cs",
+          "src/Infrastructure/src/Emulator/Main/Peripherals/CPU/ICPUWithPSCI.cs"
+        ]
+      }
+    },
+    {
+      "id": "T-RAX",
+      "kind": "rax",
+      "supported_isa_widths": [
+        64
+      ],
+      "execution_model": "emulator-bare-metal",
+      "commit": "d7ce788225d9f0439d59d14b9b173b991388d7cf",
+      "commit_date": "2026-06-29",
+      "binary_sha256": "b331c3b5ff6b2310d2274d34d3c977bbec6cd3ba8b457760aa7c40d335e1350d",
+      "coverage_binary_sha256": "b331c3b5ff6b2310d2274d34d3c977bbec6cd3ba8b457760aa7c40d335e1350d",
+      "identity_digest": "f3e6e690d7dd10ce1fe23a2093080c2f3225eb34acee34a7826265a62d8254e1",
+      "binary": "target-store/rax-riscv64/f3e6e690d7dd10ce1fe23a2093080c2f3225eb34acee34a7826265a62d8254e1/rax",
+      "coverage_binary": "simulator-coverage-builds/T-RAX-rq1-observer-trace-coverage-v3/rax",
+      "identity": "target-store/rax-riscv64/f3e6e690d7dd10ce1fe23a2093080c2f3225eb34acee34a7826265a62d8254e1/target-identity.json",
+      "probe_command": [
+        "{binary}",
+        "--arch",
+        "riscv64",
+        "--backend",
+        "emulator",
+        "--memory",
+        "128M",
+        "--kernel",
+        "{bm_elf}"
+      ],
+      "simulator_coverage": {
+        "adapter": "rax-instruction-pc"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "llvm",
+        "source_root": "/path/to/deps/simulator-sources/rax",
+        "profdata_tool": "/path/to/deps/toolchains/rust-1.88/rustup/toolchains/nightly-2026-09-12-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-profdata",
+        "cov_tool": "/path/to/deps/toolchains/rust-1.88/rustup/toolchains/nightly-2026-09-12-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-cov",
+        "profile": "coverage-profiles/T-RAX/lcov.info",
+        "identity": "coverage-profiles/T-RAX/identity.json",
+        "source_repository": "simulator-sources/rax",
+        "source_commit": "d7ce788225d9f0439d59d14b9b173b991388d7cf",
+        "target_commit": "d7ce788225d9f0439d59d14b9b173b991388d7cf",
+        "source_scope": [
+          "rax",
+          "rax-d7ce",
+          "rax-rq1-observer-patched-v1"
+        ],
+        "toolchain": "rustc-1.100.0-nightly+0fc141305 (LLVM 23.1.1; toolchain nightly-2026-09-12)",
+        "build_flags": [
+          "cargo build --release --bin rax --no-default-features --features trace --locked --offline",
+          "-C target-cpu=x86-64-v3",
+          "-Zcrate-attr=feature(stdarch_x86_avx512)",
+          "-Zcrate-attr=feature(avx512_target_feature)",
+          "-C instrument-coverage",
+          "-Z coverage-options=branch",
+          "-C debuginfo=2",
+          "-C lto=off",
+          "-C strip=none"
+        ],
+        "source_scope_exclude": [
+          "src/arm",
+          "src/arch/x86_64",
+          "src/smir/lift/hexagon.rs",
+          "src/smir/lift/x86_64.rs",
+          "src/smir/lift/aarch64.rs",
+          "src/smir/lift/avx10.rs",
+          "src/smir/lower/x86_64.rs",
+          "src/smir/lower/aarch64.rs",
+          "src/smir/lower/aarch64_x86.rs",
+          "src/smir/lower/avx10.rs",
+          "src/backend/emulator/x86_64",
+          "src/backend/emulator/arm.rs",
+          "src/backend/emulator/aarch64.rs",
+          "src/backend/emulator/armv6.rs",
+          "src/backend/emulator/hexagon",
+          "src/backend/emulator/s5l8900.rs",
+          "src/backend/emulator/gsc.rs",
+          "src/backend/hvf",
+          "src/backend/kvm",
+          "src/devices/s5l8900.rs",
+          "src/devices/s3c64xx.rs",
+          "src/devices/vga.rs",
+          "src/devices/ac97.rs",
+          "src/devices/crypto.rs",
+          "src/devices/debug.rs",
+          "src/devices/sysctl.rs",
+          "src/devices/ahci.rs",
+          "src/devices/e1000.rs",
+          "src/devices/fdc.rs",
+          "src/devices/fw_cfg.rs",
+          "src/devices/hpet.rs",
+          "src/devices/i8042.rs",
+          "src/devices/ide.rs",
+          "src/devices/ioapic.rs",
+          "src/devices/lapic.rs",
+          "src/devices/nvme.rs",
+          "src/devices/pci.rs",
+          "src/devices/pic.rs",
+          "src/devices/pit.rs",
+          "src/devices/rtc.rs",
+          "src/devices/uhci.rs",
+          "src/devices/dma.rs",
+          "src/devices/pl011.rs",
+          "src/devices/serial.rs",
+          "src/devices/virtio",
+          "src/arch/arm.rs",
+          "src/arch/hexagon.rs",
+          "src/isa_oracle.rs"
+        ]
+      }
+    },
+    {
+      "id": "T-RVVM",
+      "kind": "rvvm",
+      "execution_model": "vm-interpreter-bare-metal",
+      "translation_mode": "interpreter",
+      "commit": "c26a2a44443829b1d2d1dcb10e6db28d812411cb",
+      "commit_date": "2026-06-24",
+      "binary_sha256": "2f8b62ca2f4cbcf172ccdb2cc8dbb0e67b2061fc65d81ea1c15a50b480a27569",
+      "coverage_binary_sha256": "2f8b62ca2f4cbcf172ccdb2cc8dbb0e67b2061fc65d81ea1c15a50b480a27569",
+      "identity_digest": "b4a2c178e8700a154c51dd95584942d0aebae39ceb193a798f661da52e178f7c",
+      "binary": "target-store/rvvm-riscv64/b4a2c178e8700a154c51dd95584942d0aebae39ceb193a798f661da52e178f7c/rvvm_x86_64",
+      "coverage_binary": "simulator-coverage-builds/T-RVVM-stepcov-coverage-v2/rvvm_x86_64",
+      "identity": "target-store/rvvm-riscv64/b4a2c178e8700a154c51dd95584942d0aebae39ceb193a798f661da52e178f7c/target-identity.json",
+      "probe_command": [
+        "{binary}",
+        "{bm_elf}",
+        "-isa",
+        "rv64gc",
+        "-harts",
+        "1",
+        "-nogui",
+        "-nonet",
+        "-nosound",
+        "-noisolation",
+        "-nojit"
+      ],
+      "simulator_coverage": {
+        "adapter": "rvvm-instruction-pc"
+      },
+      "source_coverage": {
+        "format": "lcov",
+        "collector": "gcov",
+        "source_root": "/path/to/deps/simulator-sources/RVVM",
+        "build_root": "/path/to/deps/simulator-coverage-builds/T-RVVM-stepcov-coverage-v2/obj",
+        "instrumented_binaries": [
+          {
+            "path": "simulator-coverage-builds/T-RVVM-stepcov-coverage-v2/rvvm_x86_64",
+            "expected_sha256": "2f8b62ca2f4cbcf172ccdb2cc8dbb0e67b2061fc65d81ea1c15a50b480a27569"
+          }
+        ],
+        "profile": "coverage-profiles/T-RVVM/lcov.info",
+        "identity": "coverage-profiles/T-RVVM/identity.json",
+        "source_repository": "simulator-sources/RVVM",
+        "source_commit": "c26a2a44443829b1d2d1dcb10e6db28d812411cb",
+        "target_commit": "c26a2a44443829b1d2d1dcb10e6db28d812411cb",
+        "source_scope": [
+          "RVVM"
+        ],
+        "toolchain": "gcc-gcov-or-llvm-cov",
+        "build_flags": [
+          "BUILD_TYPE=release",
+          "USE_LTO=0",
+          "USE_OBJ_STAGE=1",
+          "USE_GUI=0",
+          "USE_NET=1",
+          "USE_LIB_SHARING=0",
+          "USE_RV32=1",
+          "USE_RV64=1",
+          "USE_FPU=1",
+          "USE_JIT=1",
+          "USE_GDBSTUB=1",
+          "CFLAGS=--coverage",
+          "LDFLAGS=--coverage",
+          "RQ1_STEP_COVERAGE=1"
+        ],
+        "source_scope_exclude": [
+          "src/gui",
+          "src/bindings",
+          "src/core/rvvm_blk.c",
+          "src/core/rvvm_fbdev.c",
+          "src/devices/alsa.c",
+          "src/devices/sound-hda.c",
+          "src/devices/bochs-display.c",
+          "src/devices/framebuffer.c",
+          "src/devices/framebuffer.h",
+          "src/devices/ata.c",
+          "src/devices/ata.h",
+          "src/devices/eth-oc.c",
+          "src/devices/eth-oc.h",
+          "src/devices/hid-keyboard.c",
+          "src/devices/hid-mouse.c",
+          "src/devices/hid_api.h",
+          "src/devices/hid_dev.h",
+          "src/devices/i2c-hid.c",
+          "src/devices/i2c-hid.h",
+          "src/devices/mtd-physmap.c",
+          "src/devices/mtd-physmap.h",
+          "src/devices/nvme.c",
+          "src/devices/nvme.h",
+          "src/devices/rtc-ds1742.c",
+          "src/devices/rtc-ds1742.h",
+          "src/devices/pci-vfio.c",
+          "src/devices/pci-vfio.h",
+          "src/devices/ps2-altera.c",
+          "src/devices/ps2-altera.h",
+          "src/devices/ps2-keyboard.c",
+          "src/devices/ps2-mouse.c",
+          "src/devices/rtl8169.c",
+          "src/devices/rtl8169.h",
+          "src/devices/tap_api.h",
+          "src/devices/tap_linux.c",
+          "src/devices/tap_user.c",
+          "src/devices/usb-xhci.c",
+          "src/devices/usb-xhci.h"
+        ]
+      }
+    }
+  ],
+  "methods": [
+    {
+      "id": "B-RVDV",
+      "route": "program",
+      "requires": [
+        "riscv_dv"
+      ],
+      "lane": "rv64imafdc_zicsr_zifencei/lp64d",
+      "generator_profile": {
+        "target": "rv64imafdc",
+        "isa": "rv64imafdc_zicsr_zifencei",
+        "mabi": "lp64d",
+        "tests": [
+          {
+            "name": "riscv_rand_instr_test",
+            "instr_cnt": 200,
+            "sub_programs": 5
+          }
+        ],
+        "iterations": 8,
+        "boot_mode": "m",
+        "bare_program_mode": 0,
+        "batch_size": 8,
+        "incremental_batches": true,
+        "no_csr_instr": 0,
+        "enable_floating_point": 1
+      }
+    },
+    {
+      "id": "B-TORTURE",
+      "route": "program",
+      "requires": [
+        "torture"
+      ],
+      "lane": "rv64imafdc_zicsr_zifencei/lp64d",
+      "generator_profile": {
+        "nseqs": 200,
+        "memsize": 1024,
+        "fprnd": 0,
+        "amo": true,
+        "mul": true,
+        "divider": true,
+        "mix": {
+          "xmem": 10,
+          "xbranch": 20,
+          "xalu": 50,
+          "fgen": 10,
+          "fpmem": 5,
+          "fax": 3,
+          "fdiv": 2,
+          "vec": 0
+        },
+        "segment": true,
+        "loop": true,
+        "loop_size": 64,
+        "vector": {
+          "mul": false,
+          "div": false,
+          "mix": false,
+          "fpu": false,
+          "fma": false,
+          "fcvt": false,
+          "fdiv": false,
+          "amo": false,
+          "seg": false,
+          "stride": false,
+          "pred_alu": false,
+          "pred_mem": false
+        },
+        "isa": "rv64imafdc_zicsr_zifencei",
+        "mabi": "lp64d"
+      }
+    },
+    {
+      "id": "B-CSMITH",
+      "route": "program",
+      "requires": [
+        "csmith"
+      ],
+      "lane": "rv64gcv_zicsr_zifencei/lp64d",
+      "generator_profile": {
+        "args": [
+          "--float"
+        ],
+        "isa": "rv64gcv_zicsr_zifencei",
+        "mabi": "lp64d",
+        "opt_level": 2
+      }
+    },
+    {
+      "id": "B-GEMI",
+      "route": "program",
+      "requires": [
+        "csmith",
+        "decfuzzer"
+      ],
+      "lane": "rv64gcv_zicsr_zifencei/lp64d",
+      "generator_profile": {
+        "engine": "DecFuzzer",
+        "main": "run.py",
+        "decompiler": "r2ghidra",
+        "attempt_timeout_seconds": 300,
+        "probability_live_code_mutate": 0.3,
+        "args": [
+          "--no-arrays",
+          "--no-structs",
+          "--no-unions",
+          "--no-safe-math",
+          "--no-pointers",
+          "--no-longlong",
+          "--max-funcs",
+          "1",
+          "--max-expr-complexity",
+          "5"
+        ],
+        "isa": "rv64gcv_zicsr_zifencei",
+        "mabi": "lp64d",
+        "profiles": [
+          [
+            "--no-arrays",
+            "--no-structs",
+            "--no-unions",
+            "--no-safe-math",
+            "--no-pointers",
+            "--no-longlong",
+            "--max-funcs",
+            "1",
+            "--max-expr-complexity",
+            "5"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Fuzz4All",
+      "route": "program",
+      "requires": [
+        "fuzz4all",
+        "csmith"
+      ],
+      "lane": "rv64imafdc_zicsr_zifencei/lp64d",
+      "network": "bridge",
+      "model": "wangyang25-qwen3.8-27b",
+      "adapter": "adapters/fuzz4all_adapter.py",
+      "generator_profile": {
+        "batch_size": 30,
+        "temperature": 1.0,
+        "max_length": 1024,
+        "remote_num_predict": 4096,
+        "remote_num_ctx": 8192,
+        "prompt_strategy": 2,
+        "use_hand_written_prompt": true,
+        "no_input_prompt": false,
+        "isa": "rv64imafdc_zicsr_zifencei",
+        "mabi": "lp64d"
+      },
+      "execution_policy": "remote-only"
+    }
+  ],
+  "framework_methods": [
+    {
+      "id": "Ours-RVGEN-Direct",
+      "route": "single",
+      "requires": [],
+      "lane": "rv64imafdqcvphs_sdext_smrnmi_ssctr_svinval_xtheadbb_xtheadbs_xventana_zaamo_zabha_zabhlrsc_zacas_zalasr_zalrsc_zawrs_zba_zbb_zbc_zbkb_zbkc_zbkx_zbp_zbs_zcb_zcmop_zfa_zfbfmin_zfh_zibi_zicbo_zicfiss_zicond_zicsr_zifencei_zimop_zk_zkn_zknd_zkne_zknh_zks_zksed_zksh_zvabd_zvbb_zvbc_zvdot4a_zvfbdota32f_zvfbfmin_zvfbfwma_zvfofp4min_zvfofp8min_zvfqwbdota8f_zvfqwdota8f_zvfwbdota16bf_zvfwdota16bf_zvkg_zvkn_zvkned_zvknha_zvknhb_zvks_zvksed_zvksh_zvqwbdota8i_zvqwdota8i_zvzip/lp64d",
+      "feedback_targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ],
+      "generator_profile": {
+        "steps": 10,
+        "mcmc": true,
+        "small_model": "ollama/qwen3.8:latest",
+        "open_catalog": true,
+        "target_replay_budget_seconds": 900,
+        "isa": "rv64imafdqcvphs_sdext_smrnmi_ssctr_svinval_xtheadbb_xtheadbs_xventana_zaamo_zabha_zabhlrsc_zacas_zalasr_zalrsc_zawrs_zba_zbb_zbc_zbkb_zbkc_zbkx_zbp_zbs_zcb_zcmop_zfa_zfbfmin_zfh_zibi_zicbo_zicfiss_zicond_zicsr_zifencei_zimop_zk_zkn_zknd_zkne_zknh_zks_zksed_zksh_zvabd_zvbb_zvbc_zvdot4a_zvfbdota32f_zvfbfmin_zvfbfwma_zvfofp4min_zvfofp8min_zvfqwbdota8f_zvfqwdota8f_zvfwbdota16bf_zvfwdota16bf_zvkg_zvkn_zvkned_zvknha_zvknhb_zvks_zvksed_zvksh_zvqwbdota8i_zvqwdota8i_zvzip",
+        "mabi": "lp64d",
+        "parallel_lanes": 5
+      }
+    },
+    {
+      "id": "Ours-Program-Full",
+      "route": "program",
+      "requires": [
+        "riscv_dv"
+      ],
+      "lane": "rv64imafdc_zicsr_zifencei/lp64d",
+      "feedback_targets": [
+        "T-QEMU",
+        "T-LRSV-INT",
+        "T-LRSV-TRANS",
+        "T-UNICORN",
+        "T-RENODE",
+        "T-RAX",
+        "T-RVVM"
+      ],
+      "generator_profile": {
+        "steps": 10,
+        "mcmc": true,
+        "small_model": "ollama/qwen3.8:latest",
+        "target": "rv64imafdc",
+        "isa": "rv64imafdc_zicsr_zifencei",
+        "mabi": "lp64d",
+        "enable_floating_point": 1,
+        "parallel_lanes": 1
+      }
+    }
+  ],
+  "isa_policy": {
+    "schema_version": "rq1-isa-policy-v1",
+    "mode": "open",
+    "note": "每个生成器只使用自己的实际 profile；RQ1 不设置共同 ISA/扩展族上限，也不按 applicability 裁剪目标。目标不支持时记录目标侧 unsupported-isa/illegal-instruction 并继续下一个 case。固定 RV 指标仅作诊断，不进入主结果。"
+  }
+}

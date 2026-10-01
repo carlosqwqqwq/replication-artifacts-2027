@@ -1,0 +1,797 @@
+{
+  "analysis_script_count": 30,
+  "anonymization_substitutions": "host-specific absolute paths are rewritten to /path/to/* placeholders",
+  "anonymized_url": "PENDING_GITHUB_REPOSITORY_URL_FOR_ANONYMOUS_4OPEN_SCIENCE",
+  "files": {
+    "analysis": [
+      {
+        "bytes": 88544,
+        "package": "experiments/rq1/comparison/analysis/coverage_offline.py",
+        "sha256": "d23cb590e5e29fe803ac7e310d6ecfaa01135239641dcc97dda9707ffceba39b",
+        "source": "experiments/rq1/comparison/analysis/coverage_offline.py"
+      },
+      {
+        "bytes": 13185,
+        "package": "experiments/rq1/comparison/analysis/ssd_trace_stage.py",
+        "sha256": "555973ebafe9c94eb97e32f23a6c18c4884a8c419aaa621a2d1043ef3042b4c7",
+        "source": "experiments/rq1/comparison/analysis/ssd_trace_stage.py"
+      },
+      {
+        "bytes": 18974,
+        "package": "experiments/rq1/comparison/analysis/plot_five_tool_growth_overlay.py",
+        "sha256": "96544d026499ee3800875fba745cd11b072863da20833cae1b4df814653ce73e",
+        "source": "experiments/rq1/comparison/analysis/plot_five_tool_growth_overlay.py"
+      },
+      {
+        "bytes": 195629,
+        "package": "experiments/rq1/comparison/analysis/simulator_coverage.py",
+        "sha256": "694ad632fe3910df830981ef1fabdeeca690b595114440db4e60410da5e04b12",
+        "source": "experiments/rq1/comparison/analysis/simulator_coverage.py"
+      },
+      {
+        "bytes": 46693,
+        "package": "experiments/rq1/comparison/analysis/coverage_direct_offline.py",
+        "sha256": "9862e07f1b249760faa03f5fd5657ac93ee1f4372ed303e2392f6234ad519551",
+        "source": "experiments/rq1/comparison/analysis/coverage_direct_offline.py"
+      },
+      {
+        "bytes": 46180,
+        "package": "experiments/rq1/comparison/analysis/source_growth.py",
+        "sha256": "e28d7a18f0d554929a6b220e95a8a235d897d17f448ed5865339f3e43287ca4a",
+        "source": "experiments/rq1/comparison/analysis/source_growth.py"
+      },
+      {
+        "bytes": 89836,
+        "package": "experiments/rq1/comparison/analysis/coverage_compare.py",
+        "sha256": "5e54584f80c3eba6c252da260616327679731dfff28f170df0f4d2f21245b0d9",
+        "source": "experiments/rq1/comparison/analysis/coverage_compare.py"
+      },
+      {
+        "bytes": 6382,
+        "package": "experiments/rq1/comparison/analysis/ssd_trace_stage_benchmark.py",
+        "sha256": "aa9c054073ce27420684b27a8646f527822103b80a2dc2b76adaa7233c9a1042",
+        "source": "experiments/rq1/comparison/analysis/ssd_trace_stage_benchmark.py"
+      },
+      {
+        "bytes": 87998,
+        "package": "experiments/rq1/comparison/analysis/source_coverage.py",
+        "sha256": "f816f80a704790680bc73d5c6798120b74f0f396bd4ab9735ff9a68bb2e95cc1",
+        "source": "experiments/rq1/comparison/analysis/source_coverage.py"
+      },
+      {
+        "bytes": 12451,
+        "package": "experiments/rq1/comparison/analysis/coverage_offline_gate.py",
+        "sha256": "13759da5b96e9e1dd49f86a74e41ca7dfd28c01ec596d04511331befdee27eb7",
+        "source": "experiments/rq1/comparison/analysis/coverage_offline_gate.py"
+      },
+      {
+        "bytes": 42740,
+        "package": "experiments/rq1/comparison/analysis/elf_features.py",
+        "sha256": "1886e042b760e840c7f3b609a647910230ae749c6f84617b75870d58dc007b86",
+        "source": "experiments/rq1/comparison/analysis/elf_features.py"
+      },
+      {
+        "bytes": 103041,
+        "package": "experiments/rq1/comparison/analysis/rv_instruction_coverage.py",
+        "sha256": "77f41b6f529d642ea60715e5c691bbc397d2cdf0a7eca9650d25f2e248e9000d",
+        "source": "experiments/rq1/comparison/analysis/rv_instruction_coverage.py"
+      },
+      {
+        "bytes": 6923,
+        "package": "experiments/rq1/comparison/analysis/repair_source_cells.py",
+        "sha256": "9a6514025020ffe347f85ccfa77d21dfb9f6bdff1842d83f2f5e289c2b54abba",
+        "source": "experiments/rq1/comparison/analysis/repair_source_cells.py"
+      },
+      {
+        "bytes": 38923,
+        "package": "experiments/rq1/comparison/container/resident_target_service.py",
+        "sha256": "4e22e5b1343fee04de2f7c4d82471e533ce34c7524ea3dab06d3601db2afdbcc",
+        "source": "experiments/rq1/comparison/container/resident_target_service.py"
+      },
+      {
+        "bytes": 85138,
+        "package": "experiments/rq1/comparison/container/rq1_rvgen_catalog_coverage.py",
+        "sha256": "c1970d6d5c3eadbc3a779285a73977f9518f16a98594731dbcc318813786791c",
+        "source": "experiments/rq1/comparison/container/rq1_rvgen_catalog_coverage.py"
+      },
+      {
+        "bytes": 11791,
+        "package": "experiments/rq1/comparison/container/replay_coverage_finalize.py",
+        "sha256": "add07da23c726c4c4c1b0baab951485370b2d4db2abac57577e85b1c42351ddd",
+        "source": "experiments/rq1/comparison/container/replay_coverage_finalize.py"
+      },
+      {
+        "bytes": 2924,
+        "package": "experiments/rq1/comparison/container/run-seven-methods.sh",
+        "sha256": "090e06a8c2df047e83d0c3aafd273b6a0d89094d69faa2c4701769c5e78cfed8",
+        "source": "experiments/rq1/comparison/container/run-seven-methods.sh"
+      },
+      {
+        "bytes": 8879,
+        "package": "experiments/rq1/comparison/container/control-five-tool-replay.sh",
+        "sha256": "a888b10dc6d5da125eb748630f3977c5a848a2a75aaeea77c2f8cdf2d8cc96dd",
+        "source": "experiments/rq1/comparison/container/control-five-tool-replay.sh"
+      },
+      {
+        "bytes": 2209,
+        "package": "experiments/rq1/comparison/container/k1-reference-locks.sh",
+        "sha256": "6224783976546bb583ef77f75c5824b3d73545224445db5f6f4edb0461b2cfa7",
+        "source": "experiments/rq1/comparison/container/k1-reference-locks.sh"
+      },
+      {
+        "bytes": 18438,
+        "package": "experiments/rq1/comparison/container/run-rvgen-catalog-coverage-72h.sh",
+        "sha256": "2ffe116225b91d8f5377f9969bedbf8a967bfaa5d97b70c4f46dc9433434bd52",
+        "source": "experiments/rq1/comparison/container/run-rvgen-catalog-coverage-72h.sh"
+      },
+      {
+        "bytes": 120353,
+        "package": "experiments/rq1/comparison/container/run-linux.sh",
+        "sha256": "1954ce5a1128719c130e6a92806fcf20d3a73a0b29b1d42e723b44e41f413a28",
+        "source": "experiments/rq1/comparison/container/run-linux.sh"
+      },
+      {
+        "bytes": 4870,
+        "package": "experiments/rq1/comparison/container/control-rvgen-catalog-72h.sh",
+        "sha256": "c974e2d8e8fc40b6141d514247ccd7f35009f1ccb1ca11a5106d1107ef565693",
+        "source": "experiments/rq1/comparison/container/control-rvgen-catalog-72h.sh"
+      },
+      {
+        "bytes": 24477,
+        "package": "experiments/rq1/comparison/container/run-five-tool-generation.sh",
+        "sha256": "9889ed70066a2549a319ff32bb22583825975112ae92749110bb6813d34f400d",
+        "source": "experiments/rq1/comparison/container/run-five-tool-generation.sh"
+      },
+      {
+        "bytes": 12247,
+        "package": "experiments/rq1/comparison/container/control-seven-long-methods.sh",
+        "sha256": "e418ca9cf438d4cbf2692d0642887f86a5c507797802b0b1317fa8530758521a",
+        "source": "experiments/rq1/comparison/container/control-seven-long-methods.sh"
+      },
+      {
+        "bytes": 24293,
+        "package": "experiments/rq1/comparison/container/framework-run-supervisor.sh",
+        "sha256": "b4617064e2f15a2f629e333322efd98c71135dc092a97bf1afd4a8e10f7935d8",
+        "source": "experiments/rq1/comparison/container/framework-run-supervisor.sh"
+      },
+      {
+        "bytes": 9934,
+        "package": "experiments/rq1/comparison/container/control-run.sh",
+        "sha256": "75eef23b760a624664558247060affe8137536c3815c9f674835da5d3453b969",
+        "source": "experiments/rq1/comparison/container/control-run.sh"
+      },
+      {
+        "bytes": 18829,
+        "package": "experiments/rq1/comparison/container/run-five-tool-replay.sh",
+        "sha256": "badf49f6e8698340567fce31f78f4f59126cc9827c7243c307afd87334622a98",
+        "source": "experiments/rq1/comparison/container/run-five-tool-replay.sh"
+      },
+      {
+        "bytes": 35876,
+        "package": "experiments/rq1/comparison/container/run-seven-long-methods.sh",
+        "sha256": "1356423c84bfa532f157b1e13222a01fa96cb705acfe9cf81969a834e0b68f93",
+        "source": "experiments/rq1/comparison/container/run-seven-long-methods.sh"
+      },
+      {
+        "bytes": 31809,
+        "package": "experiments/rq1/comparison/container/assets/rvdv/run_compat.py",
+        "sha256": "9f085518b04fa07ec0b0f2bd595453c53df62f196eb42420fa0c59e0aab152ed",
+        "source": "experiments/rq1/comparison/container/assets/rvdv/run_compat.py"
+      },
+      {
+        "bytes": 52,
+        "package": "experiments/rq1/comparison/container/assets/rvdv/imp.py",
+        "sha256": "969785a7158f148c37c1ba23d2a082cd3389a236914ded13a43fefdad0cd1f83",
+        "source": "experiments/rq1/comparison/container/assets/rvdv/imp.py"
+      }
+    ],
+    "vernier": [
+      {
+        "bytes": 11814,
+        "package": "target_session.py",
+        "sha256": "4a2f06ac69e1ab295559ea14289b1ba4ad2eb92e2939506aec191a3b09f7924b",
+        "source": "target_session.py"
+      },
+      {
+        "bytes": 82498,
+        "package": "spec_definedness.py",
+        "sha256": "cd26bb0482bf6f8ac92d225db3661004a83c79dd74c6da3c6d629a0e03e792a8",
+        "source": "spec_definedness.py"
+      },
+      {
+        "bytes": 3968,
+        "package": "native_reference_gate.py",
+        "sha256": "62fea54785193dbe3344c0f687d629eda4f968c867efecb2d2d6ecb827bfd5b4",
+        "source": "native_reference_gate.py"
+      },
+      {
+        "bytes": 3947,
+        "package": "target_consumer.py",
+        "sha256": "64a10bfa2e9b25d08f096a4f67516f4a06b2675024dada38cade83079f3cb7b8",
+        "source": "target_consumer.py"
+      },
+      {
+        "bytes": 107826,
+        "package": "direct_runner.py",
+        "sha256": "f379391dd2477cd591e5fb7b4b5dc9f7947a6b4240415d3ef93d4fe224d8373b",
+        "source": "direct_runner.py"
+      },
+      {
+        "bytes": 6791,
+        "package": "target_evidence.py",
+        "sha256": "dc8ef485bf510972b2d92d1423a8e3334d4d0a921eb6b1d6c24e5e7217d19439",
+        "source": "target_evidence.py"
+      },
+      {
+        "bytes": 223052,
+        "package": "riscv_catalog.py",
+        "sha256": "1ebc4a735244d6be0c11716a6070a8a8335175b2698cc4f5eeea175aa22a7a18",
+        "source": "riscv_catalog.py"
+      },
+      {
+        "bytes": 16677,
+        "package": "program_target_stage.py",
+        "sha256": "f0e00cc1444c552d96a5b7f96e5f6e6f16b79bc85ef46b42e0e907126e7e2c1e",
+        "source": "program_target_stage.py"
+      },
+      {
+        "bytes": 1462,
+        "package": "reference_fallback.py",
+        "sha256": "3c2a015088d7871fc3622a1c407cc55ee5746fbd93d37ffe2e38805689d33c19",
+        "source": "reference_fallback.py"
+      },
+      {
+        "bytes": 13937,
+        "package": "sail_definedness_oracle.py",
+        "sha256": "957612d9bde13adb77c5995ec679d8ab2d3d1d810f95f68d1702428b00680601",
+        "source": "sail_definedness_oracle.py"
+      },
+      {
+        "bytes": 178994,
+        "package": "riscv_semantic_references.py",
+        "sha256": "7fc9c8bdf2ca33c4b8c783c6ee22d90e1c99918ccced2f809dc4aef9ec12695a",
+        "source": "riscv_semantic_references.py"
+      },
+      {
+        "bytes": 65537,
+        "package": "target_queue_service.py",
+        "sha256": "a2d95308f6a24af1dadd58c168b5e9ea81f5b95aa42f9b2132b345b877a50dff",
+        "source": "target_queue_service.py"
+      },
+      {
+        "bytes": 0,
+        "package": "__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source": "__init__.py"
+      },
+      {
+        "bytes": 59835,
+        "package": "direct_case.py",
+        "sha256": "87bb28317e953deb37e31cb4148ef6ecc92d6a21d3b81a091f957466ec26d381",
+        "source": "direct_case.py"
+      },
+      {
+        "bytes": 621,
+        "package": "campaign_route.py",
+        "sha256": "03576cd73ddaa7daf39c87fa4caf8d7e5e5e24a5785dfe629d60e8b765adc149",
+        "source": "campaign_route.py"
+      },
+      {
+        "bytes": 4595,
+        "package": "paths.py",
+        "sha256": "0a5847551008e63353671dd7f9b24c1f4d06e77458a3e11b7599daa34be9838b",
+        "source": "paths.py"
+      },
+      {
+        "bytes": 119,
+        "package": "capsule_csr_facts.py",
+        "sha256": "dc33428a98490717374d6b44445376b4dab8b7c33a36853dbc43fc67dc5b8cff",
+        "source": "capsule_csr_facts.py"
+      },
+      {
+        "bytes": 173,
+        "package": "step_policy.py",
+        "sha256": "5027931f86dce4c66348cce720638a7b060ce278d20f3670ff291154025b0326",
+        "source": "step_policy.py"
+      },
+      {
+        "bytes": 143354,
+        "package": "framework_coverage.py",
+        "sha256": "23373096c0ea22d80e10046bcd62555e368563ccb72e0e11b6cb6528d8d81953",
+        "source": "framework_coverage.py"
+      },
+      {
+        "bytes": 2063,
+        "package": "observability.py",
+        "sha256": "36c9cc6a79b1a93a2c7b207d744f8cc88f0911e0b7419fd475f9cb2f51daf114",
+        "source": "observability.py"
+      },
+      {
+        "bytes": 231296,
+        "package": "program_campaign.py",
+        "sha256": "6c64b31d6e6e67d00e80a7bc82773f933ea5f17a1c365a835c0f4ad8154b4139",
+        "source": "program_campaign.py"
+      },
+      {
+        "bytes": 10550,
+        "package": "campaign_contract.py",
+        "sha256": "33f1bda80b07dbf2dc7cfac398499c83f8d12a6591b717b9d2fc890b85ccaf04",
+        "source": "campaign_contract.py"
+      },
+      {
+        "bytes": 58348,
+        "package": "direct_elf.py",
+        "sha256": "8fe47d3d03a6d41db3d806944bf3506cd02a0ee4ca58d45aa251e52c278077b6",
+        "source": "direct_elf.py"
+      },
+      {
+        "bytes": 11320,
+        "package": "reference_contract.py",
+        "sha256": "dee82012bcb67c1b02c9ef509b3f31dbb7b99c000c29f626e19adb1e55572175",
+        "source": "reference_contract.py"
+      },
+      {
+        "bytes": 23473,
+        "package": "execution_identity.py",
+        "sha256": "146607c3a88ef88cf119d64717c9c0ac9ddad68c6ab0c763059eb9101185180a",
+        "source": "execution_identity.py"
+      },
+      {
+        "bytes": 15863,
+        "package": "_util.py",
+        "sha256": "af2e86ac4d70c266107cc6632ee43aab672c1e3188d4207a5f56833340a63c1a",
+        "source": "_util.py"
+      },
+      {
+        "bytes": 26583,
+        "package": "program_runner.py",
+        "sha256": "365ffdc2913d7a86dde573bcdb903bbfa9506d55704760eca471862eecbdace4",
+        "source": "program_runner.py"
+      },
+      {
+        "bytes": 36476,
+        "package": "target_session_worker.py",
+        "sha256": "91adca9511cfe1c7b4730efebc818473c491778af6154a4815871b03e0542d7f",
+        "source": "target_session_worker.py"
+      },
+      {
+        "bytes": 8947,
+        "package": "state_contract.py",
+        "sha256": "306daa45fb9659c016b847683a56579ee73d93bcea7458bfc4a9cdc7578aeaf0",
+        "source": "state_contract.py"
+      },
+      {
+        "bytes": 889,
+        "package": "program_route.py",
+        "sha256": "8137e85119a42756600db96c8fdfc565f6edeafc9d30fe6b0dd2cb55b617e4f6",
+        "source": "program_route.py"
+      },
+      {
+        "bytes": 14436,
+        "package": "execution_environment.py",
+        "sha256": "ceb55c81c6188dcb1771e786685c126d323f6e36885f725f06e68aa493642963",
+        "source": "execution_environment.py"
+      },
+      {
+        "bytes": 7699,
+        "package": "_translation_cell.py",
+        "sha256": "bbcad30649078b9fe229055e018645d1834939b005706dc776ddfb061f863c00",
+        "source": "_translation_cell.py"
+      },
+      {
+        "bytes": 42083,
+        "package": "riscv_encoding.py",
+        "sha256": "958a539df8988ce8ed56045030f23e307372e62c917169487d79e8f9fdca64bb",
+        "source": "riscv_encoding.py"
+      },
+      {
+        "bytes": 10398,
+        "package": "riscv_csrs.py",
+        "sha256": "585309005d38bb6df4e47bef2b302f41528c3a9ebcbb6261e833c34dfa57922a",
+        "source": "riscv_csrs.py"
+      },
+      {
+        "bytes": 7197,
+        "package": "mcmc/sampler.py",
+        "sha256": "744f2932c47a86e222c4b94ceacd58d0af64efe9302dccc8e94918460a16f311",
+        "source": "mcmc/sampler.py"
+      },
+      {
+        "bytes": 99894,
+        "package": "mcmc/program.py",
+        "sha256": "934f769a85a14ebceda7762d13ee7e6cfd1d8d2529fc6fb986dd4bf77728f346",
+        "source": "mcmc/program.py"
+      },
+      {
+        "bytes": 2107,
+        "package": "configs/sail-rvgen-user.json",
+        "sha256": "351a1ebe2f0f99810982deeccf61287f3711b0e1070230690ee3f9af84f9f7a3",
+        "source": "configs/sail-rvgen-user.json"
+      },
+      {
+        "bytes": 18197,
+        "package": "cli/_gdb_remote.py",
+        "sha256": "76abe44bfa1a9f5225523f4cf3d9ac2f6eccf5c55132c2eef1baf62eb50d3224",
+        "source": "cli/_gdb_remote.py"
+      },
+      {
+        "bytes": 29553,
+        "package": "cli/run_single_campaign.py",
+        "sha256": "a203aac7732dfd44a988889b1fc44fe570a5939e1cec7536f23fea14b6f1785a",
+        "source": "cli/run_single_campaign.py"
+      },
+      {
+        "bytes": 32599,
+        "package": "cli/libriscv_trace_runner.py",
+        "sha256": "31e9a328f297e07b07325e90a79d3cc08bbb16c0559c3de42db993ec5fc95db9",
+        "source": "cli/libriscv_trace_runner.py"
+      },
+      {
+        "bytes": 59133,
+        "package": "cli/run_program_campaign.py",
+        "sha256": "0f2131ec76866786cec7b3c3e4ae86db831c22a42cff33c3f51b4f64a2506c3e",
+        "source": "cli/run_program_campaign.py"
+      },
+      {
+        "bytes": 57073,
+        "package": "cli/qemu_trace_runner.py",
+        "sha256": "ed7caded73b18df6848ea42645f274e902d8140166a993905c510deecf14cc58",
+        "source": "cli/qemu_trace_runner.py"
+      },
+      {
+        "bytes": 25713,
+        "package": "native_trace/ptrace_trace.c",
+        "sha256": "e69e81ad72a291ddc3f386209fd7cb31ab9b9828b341c0d7306e5326434178a8",
+        "source": "native_trace/ptrace_trace.c"
+      },
+      {
+        "bytes": 35322,
+        "package": "supply/model_candidate_supply.py",
+        "sha256": "b11888ac1373c43bedb8b14cd1e7e72296fb0c8562ccf55f32e3d98643ab62a5",
+        "source": "supply/model_candidate_supply.py"
+      },
+      {
+        "bytes": 77953,
+        "package": "rvgen/single_campaign.py",
+        "sha256": "e5f35deda20a5c9d3950ca84ff0ebda411b56c1908ba5fdbe2d0a70adf9c5ddd",
+        "source": "rvgen/single_campaign.py"
+      },
+      {
+        "bytes": 101928,
+        "package": "rvgen/boundaries.py",
+        "sha256": "d8c2aeb30d65b795063471622322bb3c68cdfd2c3743bedbb4caf2945e6bcb09",
+        "source": "rvgen/boundaries.py"
+      },
+      {
+        "bytes": 935,
+        "package": "rvgen/provider.py",
+        "sha256": "9b6edff6edda3c944793fab7d32ab6ed8f423b748e3fda1c658e456246f92af1",
+        "source": "rvgen/provider.py"
+      },
+      {
+        "bytes": 10900,
+        "package": "rvgen/core.py",
+        "sha256": "2a74b230ec9b68bb38fb1ad02c1f8bbf978620ca3ecea96da3033985bd1fabc5",
+        "source": "rvgen/core.py"
+      },
+      {
+        "bytes": 273880,
+        "package": "rvgen/semantic_machine.py",
+        "sha256": "16574af44cb0b5d86f6fc4bd623db4b66ff929459f49ed1acf27635ae7831c3f",
+        "source": "rvgen/semantic_machine.py"
+      },
+      {
+        "bytes": 138204,
+        "package": "rvgen/intents.py",
+        "sha256": "ffac08a4f7fc8405c0be2a803fd7ed3735f6b5b742a338a2004416f615a888ee",
+        "source": "rvgen/intents.py"
+      },
+      {
+        "bytes": 147695,
+        "package": "rvgen/materialize.py",
+        "sha256": "54a0de4ebd26c2ba6be2c85109fd95cbcf8b11e980b69dfce6963a2c24c4e251",
+        "source": "rvgen/materialize.py"
+      },
+      {
+        "bytes": 352,
+        "package": "rvgen/__init__.py",
+        "sha256": "dcafd7623cec5dceae366b133c7e17d8f58ef95ab2159aa09798cdbd31f11e13",
+        "source": "rvgen/__init__.py"
+      },
+      {
+        "bytes": 89164,
+        "package": "rvgen/effects.py",
+        "sha256": "a691f5aba759f3fff4981e622c7c55f45aaf201826e465c3c0894bcb51675031",
+        "source": "rvgen/effects.py"
+      },
+      {
+        "bytes": 8957,
+        "package": "rvgen/ledger.py",
+        "sha256": "537db1d1dd515f7cea19195b783186fd4b0c82c82590726cf4b0655049f24997",
+        "source": "rvgen/ledger.py"
+      },
+      {
+        "bytes": 116955,
+        "package": "rvgen/single_program.py",
+        "sha256": "7563dc8187ab684f72e71cd3bc972db3bbc4b62918956847f3e2bcbaa19e434b",
+        "source": "rvgen/single_program.py"
+      },
+      {
+        "bytes": 2943,
+        "package": "rvgen/obligations.py",
+        "sha256": "3ce4bd7c9ce8e0555843776990b8acb71f434882269e269cf4ec4ad72c3a88a7",
+        "source": "rvgen/obligations.py"
+      },
+      {
+        "bytes": 121517,
+        "package": "rvgen/admission.py",
+        "sha256": "3ea53629fad2b522ef0eadcc523f101434025aab9e07c94c9b81e731d51e1e67",
+        "source": "rvgen/admission.py"
+      },
+      {
+        "bytes": 5371,
+        "package": "rvemi/runtime_spec.py",
+        "sha256": "18257f47d72547abce8b036a8ffb84b8564a842f4dcc2c3d91d29a1ca175583b",
+        "source": "rvemi/runtime_spec.py"
+      },
+      {
+        "bytes": 370616,
+        "package": "rvemi/program.py",
+        "sha256": "ce266db6dcdbdef7e4b5ed914e5ebe2259165e0b726b49cbf0ffdccf76f69bf3",
+        "source": "rvemi/program.py"
+      },
+      {
+        "bytes": 80972,
+        "package": "native/rv64_runner.py",
+        "sha256": "248d52d14f28cb3479b0aa45eacf2d564006d73fc8c92b5c8ac4da267cb8c1ff",
+        "source": "native/rv64_runner.py"
+      },
+      {
+        "bytes": 16116,
+        "package": "native/k1_jtag_runner.py",
+        "sha256": "cb81175cda6220beb8c53e23f5c7bf784237bf9d43d89456751613155357b74c",
+        "source": "native/k1_jtag_runner.py"
+      },
+      {
+        "bytes": 79,
+        "package": "native/__init__.py",
+        "sha256": "b152a5c9557ad2a7b0b81f24f6cc1bb1ec757bb05cc0b4788c5636536e102985",
+        "source": "native/__init__.py"
+      },
+      {
+        "bytes": 1128,
+        "package": "adapters/rvvm_rsp.py",
+        "sha256": "85480d7c701c9f254d3b5f300829c3a15002aa937de93fb23704c68c35b6c22f",
+        "source": "adapters/rvvm_rsp.py"
+      },
+      {
+        "bytes": 2745,
+        "package": "adapters/capsule_dispatch.py",
+        "sha256": "88617a6901053501d7fa362dc414f39699e7bfa19b6060f2d3466cf56e55244a",
+        "source": "adapters/capsule_dispatch.py"
+      },
+      {
+        "bytes": 38439,
+        "package": "adapters/capsule_unicorn.py",
+        "sha256": "b22b7b140c015278d3206686c88e3e393863173f14fed30261c1349ab8963ee4",
+        "source": "adapters/capsule_unicorn.py"
+      },
+      {
+        "bytes": 18926,
+        "package": "adapters/contracts.py",
+        "sha256": "74a4a94b64f93e23dc99b6f0ce8848627b7b6a9a385c57c123bb33a6c8d9896a",
+        "source": "adapters/contracts.py"
+      },
+      {
+        "bytes": 59421,
+        "package": "adapters/program_observer.py",
+        "sha256": "834faa944c9b020a595817c14d64db12d66d1852c469153179887c5e9032f17a",
+        "source": "adapters/program_observer.py"
+      },
+      {
+        "bytes": 27346,
+        "package": "adapters/capsule_rax.py",
+        "sha256": "870d467b4d15b255689ee0117a8f302ca245b51304383fb350704068d170e2b1",
+        "source": "adapters/capsule_rax.py"
+      },
+      {
+        "bytes": 167393,
+        "package": "adapters/program.py",
+        "sha256": "726c724865a7e36a808cd761dfe491ee5e3fcc8585e4251bb6c7c0ee5849e9cd",
+        "source": "adapters/program.py"
+      },
+      {
+        "bytes": 15284,
+        "package": "adapters/runner.py",
+        "sha256": "754019ed70ade91f9e6917e583948bf8d767521b8b0e1adf7468309332446570",
+        "source": "adapters/runner.py"
+      },
+      {
+        "bytes": 8717,
+        "package": "adapters/rsp.py",
+        "sha256": "f8faac03891964efbd442e3923aa21271007dac12c042be37ed6c190a4b623bd",
+        "source": "adapters/rsp.py"
+      },
+      {
+        "bytes": 58617,
+        "package": "adapters/capsule_renode.py",
+        "sha256": "58ea413e0fabc4a559eba4a4c89bb889266124e871e4e12bf956ee8823c414d2",
+        "source": "adapters/capsule_renode.py"
+      },
+      {
+        "bytes": 62835,
+        "package": "adapters/riscv_dv.py",
+        "sha256": "6ab7cbcb25ddedfc55dfd4f55ae854ad9d42d9cf9ddca216bc6073282e94fed8",
+        "source": "adapters/riscv_dv.py"
+      },
+      {
+        "bytes": 5906,
+        "package": "adapters/trace_common.py",
+        "sha256": "36769ecdf00217470d7b2333e0de2d49f3cc83debaa625eec60d76ad0bdd3f3d",
+        "source": "adapters/trace_common.py"
+      },
+      {
+        "bytes": 71714,
+        "package": "adapters/rvvm_runner.py",
+        "sha256": "b2c0a04f283eb6c95f20e885600b942deecd035d733e73d88416fa8739e3ef5b",
+        "source": "adapters/rvvm_runner.py"
+      },
+      {
+        "bytes": 33589,
+        "package": "evidence/root_route_matrix.py",
+        "sha256": "61124eb5ec394a10c049459329f5be1d1ce6b685f362bfd3fd260db30306effe",
+        "source": "evidence/root_route_matrix.py"
+      },
+      {
+        "bytes": 11777,
+        "package": "evidence/target_binding.py",
+        "sha256": "720dd025d455e5f37756ebe200b034cdcb3d72fa2abe16229ca4c7f58c8df216",
+        "source": "evidence/target_binding.py"
+      },
+      {
+        "bytes": 453,
+        "package": "evidence/rax-rq1-pc-trace.patch",
+        "sha256": "78dd28668205188c61cabb42a65f50b5b51d0398fe36f2a20bbdcb773052364f",
+        "source": "evidence/rax-rq1-pc-trace.patch"
+      },
+      {
+        "bytes": 2112,
+        "package": "evidence/rvgen-rq1-program-recipes.json",
+        "sha256": "23d79d5d609e3054088bb4bd493e130d5ec6a88cace353b57cc78479d9036f01",
+        "source": "evidence/rvgen-rq1-program-recipes.json"
+      },
+      {
+        "bytes": 9431,
+        "package": "evidence/rax-rq1-rvobs1.patch",
+        "sha256": "8e4672be1b645c3ea1414aad66e9ee9bd65524b643b2dcb741e6846ca19afac2",
+        "source": "evidence/rax-rq1-rvobs1.patch"
+      },
+      {
+        "bytes": 2789,
+        "package": "evidence/target_contract.py",
+        "sha256": "832827f3cf8862f05dfc9a50a1ac7506575a42ca2061ce3f3b10107645deeef7",
+        "source": "evidence/target_contract.py"
+      },
+      {
+        "bytes": 11301,
+        "package": "evidence/recipe_contract.py",
+        "sha256": "15e729ba3634b4ab4b324fe1a79e89c42a03ab41aec76d35736e68d4d70c282a",
+        "source": "evidence/recipe_contract.py"
+      },
+      {
+        "bytes": 3811,
+        "package": "evidence/rvvm-rq1-stepcov-trace.patch",
+        "sha256": "9753e172e071f57be1d742c580a8771fe677c4fb6cace1f45dc608f60220bbdd",
+        "source": "evidence/rvvm-rq1-stepcov-trace.patch"
+      },
+      {
+        "bytes": 756,
+        "package": "evidence/rax-rq1-fpstate-v1.patch",
+        "sha256": "893da0cef5b6598f98612f35f1a74d429034f0b9769008cc4ba51af1fe58da56",
+        "source": "evidence/rax-rq1-fpstate-v1.patch"
+      },
+      {
+        "bytes": 2141,
+        "package": "evidence/rvgen-rq1-root-recipes.json",
+        "sha256": "b4608cdd7ccd012b96842cac53ee2afe38e3af125c27e367d1e3c07c2d15c503",
+        "source": "evidence/rvgen-rq1-root-recipes.json"
+      },
+      {
+        "bytes": 147363,
+        "package": "evidence/target_coverage.py",
+        "sha256": "61a3ba515967f51bbcf00ba800c93c8c42a6a473e88f5b0a525c54b4b8a44593",
+        "source": "evidence/target_coverage.py"
+      },
+      {
+        "bytes": 301,
+        "package": "evidence/rax-rq1-riscv-trace.patch",
+        "sha256": "0bc55cc82b0b7da52fb6931905b50ef4f2f015d93e6506f66aa581f96ea716ce",
+        "source": "evidence/rax-rq1-riscv-trace.patch"
+      },
+      {
+        "bytes": 751047,
+        "package": "runner.py",
+        "sha256": "1b0f1ba4bf92ae1d00be9bcd52d9062a7a072c93aeef5c4978f16735a7b82d3e",
+        "source": "runner.py"
+      },
+      {
+        "bytes": 78579,
+        "package": "case_catalog.py",
+        "sha256": "328fa8adc984abc6beb7b3e71bc051f09ed708cfb3c599a673ede5ee9430c6f3",
+        "source": "case_catalog.py"
+      },
+      {
+        "bytes": 37509,
+        "package": "comparison_observations.py",
+        "sha256": "1076fa4b2eb3470fcd181e5fd760e0f2aaa1aeaa53ce6df188dbf2f0afca1f3a",
+        "source": "comparison_observations.py"
+      },
+      {
+        "bytes": 23331,
+        "package": "comparison_state.py",
+        "sha256": "77e20a1fd1716bbae90c06bac777803346b033ed6abe3344fef48fbb4b1965d3",
+        "source": "comparison_state.py"
+      },
+      {
+        "bytes": 41219,
+        "package": "comparison_coverage.py",
+        "sha256": "9977cca8f46b9824085a7293b8a6b19f58a742fb30ae374c5c6877f1f754ba8b",
+        "source": "comparison_coverage.py"
+      },
+      {
+        "bytes": 834,
+        "package": "rv_instruction_coverage.py",
+        "sha256": "4362471d1e4691521c9087d00628703d226c35dd3c2d623cdc21732aa53c0d67",
+        "source": "rv_instruction_coverage.py"
+      },
+      {
+        "bytes": 139570,
+        "package": "coverage_progress.py",
+        "sha256": "f6e1fb01c4775bb40f2e7e507066671d57218128670c7cae3d922e5df535b50e",
+        "source": "coverage_progress.py"
+      },
+      {
+        "bytes": 38918,
+        "package": "config/rq1-comparison-isolated-v1.json",
+        "sha256": "c83fe74ca0e318699e115d7297ec093edce683d639a1e7302afa42f97c2cbff5",
+        "source": "config/rq1-comparison-isolated-v1.json"
+      }
+    ]
+  },
+  "package_name": "Vernier anonymized replication package",
+  "raw_per_test_artifacts": {
+    "index_script": "scripts/index_per_test_artifacts.py",
+    "status": "external-run-roots"
+  },
+  "release_blockers": [
+    "event_id join for the 103 event rows is pending; current crosswalk supplies issue-point counts and reproducers",
+    "upstream issue/PR URLs are not present for the 27 Direct issue points",
+    "a GitHub source repository URL is required before anonymous.4open.science can create a mirror"
+  ],
+  "rvt_bench": {
+    "defects": 27,
+    "events": 103
+  },
+  "schema": "vernier-replication-package-v1",
+  "six_emulators": [
+    "qemu",
+    "libriscv",
+    "unicorn",
+    "renode",
+    "rax",
+    "rvvm"
+  ],
+  "source_dirty_at_build": true,
+  "source_revision": "a612b2b2d4dbfe71107d8886953a2fd206b61bff",
+  "source_tree": "rq1-comparison",
+  "target_lanes": [
+    "T-QEMU",
+    "T-LRSV-INT",
+    "T-LRSV-TRANS",
+    "T-UNICORN",
+    "T-RENODE",
+    "T-RAX",
+    "T-RVVM"
+  ],
+  "vernier_source_file_count": 95
+}

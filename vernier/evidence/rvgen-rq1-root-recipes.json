@@ -1,0 +1,61 @@
+{
+  "schema": "rq1-rvgen-root-ledger-v1",
+  "route_records": [
+    {
+      "route_key": "rq1:rvgen:rv64i-addi",
+      "route_id": "RQ1-RVGEN-RV64I-ADDI",
+      "tool": "rvgen",
+      "route_kind": "direct",
+      "route_status": "rq1-pretrial",
+      "target_scope_included": true,
+      "root_key": "rq1-rvgen-rv64i-addi",
+      "lineage_key": "rq1-rvgen-scalar-addi",
+      "mapping_status": "mapped",
+      "generation": {
+        "route": "single",
+        "source": "framework/rvgen:addi",
+        "direct": "generate_form(addi)",
+        "isa": "rv64imafdqcvphs_sdext_smrnmi_ssctr_svinval_xtheadbb_xtheadbs_xventana_zaamo_zabha_zabhlrsc_zacas_zalasr_zalrsc_zawrs_zba_zbb_zbc_zbkb_zbkc_zbkx_zbp_zbs_zcb_zcmop_zfa_zfbfmin_zfh_zibi_zicbo_zicfiss_zicond_zicsr_zifencei_zimop_zk_zkn_zknd_zkne_zknh_zks_zksed_zksh_zvabd_zvbb_zvbc_zvdot4a_zvfbdota32f_zvfbfmin_zvfbfwma_zvfofp4min_zvfofp8min_zvfqwbdota8f_zvfqwdota8f_zvfwbdota16bf_zvfwdota16bf_zvkg_zvkn_zvkned_zvknha_zvknhb_zvks_zvksed_zvksh_zvqwbdota8i_zvqwdota8i_zvzip",
+        "mabi": "lp64d",
+        "initial_state": {
+          "entry": "_start",
+          "rd": "x1",
+          "rs1": "x6",
+          "immediate": 0
+        },
+        "sequence": [
+          "addi rd=x1 rs1=x6 imm=0"
+        ]
+      },
+      "reference": {
+        "backend": "native-rv64",
+        "target": "T-K1-BOARD",
+        "runner_path": "framework/native/rv64_runner.py",
+        "identity_resolution": "runtime",
+        "expected": {"status": "recorded"},
+        "fallback": {
+          "backend": "qemu-riscv64",
+          "target_id": "T-QEMU",
+          "on": ["k1-timeout", "k1-transport-unavailable"],
+          "selection_scope": "whole-campaign"
+        }
+      },
+      "target": {
+        "backend": "qemu-riscv64",
+        "identity_resolution": "runtime",
+        "expected": {
+          "status": "normal"
+        }
+      },
+      "observer": {
+        "fields": [
+          "executed_pcs",
+          "outcome",
+          "memory.test-memory"
+        ],
+        "semantic_witness": "RVGEN integer writeback"
+      },
+      "path": "framework/evidence/rvgen-rq1-root-recipes.json"
+    }
+  ]
+}

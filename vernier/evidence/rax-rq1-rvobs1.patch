@@ -1,0 +1,242 @@
+diff --git a/src/arch/mod.rs b/src/arch/mod.rs
+index 522c6b7..81e3c56 100644
+--- a/src/arch/mod.rs
++++ b/src/arch/mod.rs
+@@ -50,6 +50,8 @@ pub struct RiscVBootInfo {
+     pub load_addr: u64,
+     pub image_size: u64,
+     pub tohost_addr: Option<u64>,
++    /// Optional RVOBS1 observation mailbox discovered in an ELF image.
++    pub observation_addr: Option<u64>,
+ }
+
+ /// Boot information returned after image loading.
+diff --git a/src/arch/riscv.rs b/src/arch/riscv.rs
+index d1c86e7..a20526e 100644
+--- a/src/arch/riscv.rs
++++ b/src/arch/riscv.rs
+@@ -97,6 +97,7 @@ impl Riscv64Arch {
+             load_addr: 0,
+             image_size: buf.len() as u64,
+             tohost_addr: None,
++            observation_addr: None,
+         })
+     }
+
+@@ -127,6 +128,7 @@ impl Riscv64Arch {
+             load_addr: load_base,
+             image_size: buf.len() as u64,
+             tohost_addr: None,
++            observation_addr: None,
+         })
+     }
+
+@@ -180,6 +182,7 @@ impl Riscv64Arch {
+         let mut found_test_entry = false;
+         let mut first_numbered_test = None;
+         let mut tohost_addr = None;
++        let mut observation_addr = None;
+         for sym in &elf.syms {
+             if sym.st_value == 0 {
+                 continue;
+@@ -188,11 +191,15 @@ impl Riscv64Arch {
+                 if name == "tohost" {
+                     tohost_addr = Some(sym.st_value);
+                 }
++                if observation_addr.is_none() && (name == "obs_buf" || name == "result_buffer") {
++                    observation_addr = Some(sym.st_value);
++                }
+                 if name == "test_entry" {
+                     entry_point = sym.st_value;
+                     found_test_entry = true;
+                     first_numbered_test = None;
+-                    break;
++                    // Keep scanning: RVOBS1 symbols may appear after
++                    // test_entry in the ELF symbol table.
+                 }
+                 if let Some(suffix) = name.strip_prefix("test_") {
+                     if !suffix.is_empty() && suffix.bytes().all(|b| b.is_ascii_digit()) {
+@@ -217,6 +224,7 @@ impl Riscv64Arch {
+             load_addr: if min_addr == u64::MAX { 0 } else { min_addr },
+             image_size: max_addr.saturating_sub(min_addr),
+             tohost_addr,
++            observation_addr,
+         })
+     }
+ }
+diff --git a/src/backend/emulator/riscv/cpu.rs b/src/backend/emulator/riscv/cpu.rs
+index 1ea4cef..f40eafe 100644
+--- a/src/backend/emulator/riscv/cpu.rs
++++ b/src/backend/emulator/riscv/cpu.rs
+@@ -17,6 +17,7 @@ use vm_memory::{Bytes, GuestAddress, GuestMemoryMmap};
+ use crate::cpu::{CpuState, RiscVRegisters, VCpu, VcpuExit};
+ use crate::error::{Error, Result};
+ use crate::riscv::{MemError, MemResult, Memory, RiscVConfig, RiscVCpu, RiscVExit};
++use crate::riscv::cpu::Priv;
+
+ /// 16550 UART MMIO base/length (matches `Riscv64Arch::serial_mmio_base`).
+ const UART_BASE: u64 = 0x1000_0000;
+@@ -156,6 +157,10 @@ impl VCpu for RiscVVcpu {
+             match exit {
+                 RiscVExit::Continue => {}
+                 RiscVExit::Ecall => {
++                    if self.cpu.privilege() == Priv::Machine {
++                        self.cpu.deliver_ecall_trap();
++                        continue;
++                    }
+                     let syscall = self.cpu.x(17);
+                     let code = self.cpu.x(10);
+                     self.halted = true;
+@@ -171,14 +176,10 @@ impl VCpu for RiscVVcpu {
+                     return Ok(VcpuExit::Debug);
+                 }
+                 RiscVExit::Wfi => {}
+-                RiscVExit::Trap(t) => {
+-                    self.halted = true;
+-                    return Ok(VcpuExit::Unknown(format!(
+-                        "riscv trap: cause={} tval={:#x} pc={:#x}",
+-                        t.cause,
+-                        t.tval,
+-                        self.cpu.pc()
+-                    )));
++                RiscVExit::Trap(_) => {
++                    // RiscVCpu::step has already delivered the synchronous
++                    // trap to mtvec. Continue so the guest trap handler can
++                    // record the terminal state and write tohost.
+                 }
+             }
+         }
+@@ -254,6 +255,10 @@ impl VCpu for RiscVVcpu {
+         match exit {
+             RiscVExit::Continue => Ok(None),
+             RiscVExit::Ecall => {
++                if self.cpu.privilege() == Priv::Machine {
++                    self.cpu.deliver_ecall_trap();
++                    return Ok(None);
++                }
+                 let syscall = self.cpu.x(17);
+                 let code = self.cpu.x(10);
+                 self.halted = true;
+@@ -270,15 +275,7 @@ impl VCpu for RiscVVcpu {
+                 Ok(Some(VcpuExit::Debug))
+             }
+             RiscVExit::Wfi => Ok(None),
+-            RiscVExit::Trap(t) => {
+-                self.halted = true;
+-                Ok(Some(VcpuExit::Unknown(format!(
+-                    "riscv trap: cause={} tval={:#x} pc={:#x}",
+-                    t.cause,
+-                    t.tval,
+-                    self.cpu.pc()
+-                ))))
+-            }
++            RiscVExit::Trap(_) => Ok(None),
+         }
+     }
+ }
+diff --git a/src/vmm.rs b/src/vmm.rs
+index 659d0ff..0113731 100644
+--- a/src/vmm.rs
++++ b/src/vmm.rs
+@@ -1,3 +1,4 @@
++use std::io::Write;
+ use std::sync::Arc;
+ #[cfg(feature = "debug")]
+ use std::sync::mpsc::TryRecvError;
+@@ -72,6 +73,7 @@ fn null_boot_info(arch: ArchKind) -> BootInfo {
+             load_addr: 0,
+             image_size: 0,
+             tohost_addr: None,
++            observation_addr: None,
+         }),
+         ArchKind::Aarch64
+         | ArchKind::Armv7a
+@@ -421,6 +423,69 @@ fn drive_legacy_serial_irq(
+ }
+
+ impl Vmm {
++    /// Emit the RVOBS1 mailbox at the exact guest termination point.
++    ///
++    /// Bare-metal targets cannot rely on a host syscall to transport the
++    /// frame. Keeping this read in the VMM makes RAX consume the same guest
++    /// memory contract as Renode/RVVM/Unicorn, while the explicit tohost line
++    /// preserves the protocol outcome separately from the architectural frame.
++    fn emit_riscv_observation(&self, state: &crate::cpu::RiscVCpuState) {
++        const MAGIC: &[u8; 8] = b"RVOBS1\0\0";
++        const HEADER_SIZE: usize = 280;
++        const MEMORY_SIZE_OFFSET: usize = 272;
++        const MAX_MEMORY_SIZE: u64 = 1 << 24;
++
++        let memory = self.guest_mem.memory();
++        let mailbox = self
++            .boot_info
++            .as_riscv()
++            .and_then(|info| info.observation_addr);
++        let frame = mailbox.and_then(|address| {
++            let mut header = vec![0u8; HEADER_SIZE];
++            memory
++                .read_slice(&mut header, vm_memory::GuestAddress(address))
++                .ok()?;
++            if &header[..8] != MAGIC {
++                return None;
++            }
++            let checkpoint = u64::from_le_bytes(header[8..16].try_into().ok()?);
++            let memory_size = u64::from_le_bytes(
++                header[MEMORY_SIZE_OFFSET..HEADER_SIZE].try_into().ok()?,
++            );
++            if checkpoint == 0 || checkpoint & 1 != 0 || memory_size > MAX_MEMORY_SIZE {
++                return None;
++            }
++            let total = HEADER_SIZE.checked_add(usize::try_from(memory_size).ok()?)?;
++            let mut frame = vec![0u8; total];
++            memory
++                .read_slice(&mut frame, vm_memory::GuestAddress(address))
++                .ok()?;
++            Some(frame)
++        });
++
++        if let Some(frame) = frame {
++            let encoded: String = frame.iter().map(|byte| format!("{byte:02x}")).collect();
++            println!("RQ1_RVOBS1={encoded}");
++        } else {
++            debug!(?mailbox, "RISC-V terminated without a valid RVOBS1 mailbox");
++        }
++
++        if let Some(tohost) = state.regs.tohost_addr {
++            let mut raw = [0u8; 8];
++            if memory
++                .read_slice(&mut raw, vm_memory::GuestAddress(tohost))
++                .is_ok()
++            {
++                let value = u64::from_le_bytes(raw);
++                println!("RQ1_TOHOST_VALUE={value}");
++                if value != 0 {
++                    println!("RQ1_TOHOST");
++                }
++            }
++        }
++        let _ = std::io::stdout().flush();
++    }
++
+     /// Build a fresh machine: load the kernel and set boot-time CPU state.
+     pub fn new(config: VmConfig) -> Result<Self> {
+         Self::build(config, false)
+@@ -1117,6 +1182,18 @@ impl Vmm {
+                                 "vCPU shutdown"
+                             );
+                         }
++                        CpuState::RiscV(state) => {
++                            info!(
++                                pc = format!("{:#x}", state.regs.pc),
++                                tohost = ?state.regs.tohost_addr,
++                                observation = ?self
++                                    .boot_info
++                                    .as_riscv()
++                                    .and_then(|info| info.observation_addr),
++                                "vCPU shutdown"
++                            );
++                            self.emit_riscv_observation(&state);
++                        }
+                         _ => {
+                             info!("vCPU shutdown (unsupported architecture)");
+                         }

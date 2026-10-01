@@ -1,0 +1,9 @@
+{
+  "classification_unit": "trigger_event",
+  "event_count": 103,
+  "event_id_join_status": "pending",
+  "schema": "rvt-bench-release-manifest-v1",
+  "source_crosswalk": "experiments/rq1/comparison/docs/DIRECT_TARGET_DEFECT_CROSSWALK_20260929.md",
+  "unique_root_cause_count": 27,
+  "upstream_report_url_status": "pending"
+}

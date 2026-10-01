@@ -1,0 +1,184 @@
+{
+  "$id": "https://example.invalid/vernier/observation-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "backend": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "binary_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "checkpoint_pc": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "contract_error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "executed_pcs": {
+      "items": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "exit_code": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "extra_state": {
+      "type": "object"
+    },
+    "fault_address": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "fault_pc": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "gpr": {
+      "items": {
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "maxItems": 32,
+      "minItems": 32,
+      "type": "array"
+    },
+    "guest_elf_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "input_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instruction_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "memory_delta": {
+      "additionalProperties": {
+        "pattern": "^[0-9A-Fa-f]*$",
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "memory_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "memory_snapshot": {
+      "type": "object"
+    },
+    "outcome": {
+      "enum": [
+        "normal",
+        "completed",
+        "trap",
+        "nonzero-exit",
+        "timeout",
+        "unavailable",
+        "runner-contract-gap"
+      ]
+    },
+    "profile_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_stderr": {
+      "type": "string"
+    },
+    "raw_stdout": {
+      "type": "string"
+    },
+    "signal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signal_code": {
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "tool_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "translation_evidence": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "backend",
+    "outcome",
+    "exit_code",
+    "checkpoint_pc",
+    "gpr",
+    "memory_delta",
+    "memory_digest",
+    "signal",
+    "signal_code",
+    "fault_pc",
+    "fault_address",
+    "executed_pcs",
+    "instruction_count",
+    "translation_evidence",
+    "profile_id",
+    "input_id",
+    "raw_stdout",
+    "raw_stderr",
+    "binary_sha256",
+    "tool_version",
+    "extra_state",
+    "contract_error"
+  ],
+  "title": "Vernier normalized observation",
+  "type": "object"
+}

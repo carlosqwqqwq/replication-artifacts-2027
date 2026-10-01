@@ -1,0 +1,28 @@
+{
+  "$id": "https://example.invalid/vernier/observation-libriscv-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "observation-v1.schema.json"
+    },
+    {
+      "properties": {
+        "backend": {
+          "const": "libriscv-riscv64"
+        }
+      },
+      "type": "object"
+    }
+  ],
+  "title": "Vernier libriscv observation schema",
+  "x-libriscv-modes": [
+    "T-LRSV-INT",
+    "T-LRSV-TRANS"
+  ],
+  "x-target": {
+    "backend": "libriscv-riscv64",
+    "coverage": "gcov LCOV",
+    "termination": "Linux exit, fuel exhaustion or guest exception",
+    "trace": "INT debug PC lines or TRANS trace lines; unique PCs"
+  }
+}

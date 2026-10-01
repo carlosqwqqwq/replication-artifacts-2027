@@ -1,0 +1,24 @@
+diff --git a/src/vmm.rs b/src/vmm.rs
+--- a/src/vmm.rs
++++ b/src/vmm.rs
+@@ -466,8 +466,20 @@ impl Vmm {
+         if let Some(frame) = frame {
+             let encoded: String = frame.iter().map(|byte| format!("{byte:02x}")).collect();
+             println!("RQ1_RVOBS1={encoded}");
+         } else {
+             debug!(?mailbox, "RISC-V terminated without a valid RVOBS1 mailbox");
+         }
+ 
++        let fprs = state
++            .regs
++            .f
++            .iter()
++            .map(|value| format!("{value:016x}"))
++            .collect::<Vec<_>>()
++            .join(",");
++        println!(
++            "RQ1_FPSTATE=fpr:{fprs};fcsr:{:08x}",
++            state.regs.fcsr
++        );
++
+         if let Some(tohost) = state.regs.tohost_addr {

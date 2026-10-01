@@ -1,0 +1,71 @@
+{
+  "schema": "rq1-rvgen-program-ledger-v1",
+  "route_records": [
+    {
+      "route_key": "rq1:rvgen:program",
+      "route_id": "RQ1-RVGEN-PROGRAM",
+      "tool": "rvgen",
+      "route_kind": "program",
+      "route_status": "rq1-pretrial",
+      "target_scope_included": true,
+      "root_key": "rq1-rvgen-program",
+      "lineage_key": "rq1-rvgen-program-direct",
+      "mapping_status": "mapped",
+      "generation": {
+        "route": "program",
+        "source": "riscv-dv",
+        "target": "rv64imafdc",
+        "test": "riscv_rand_instr_test",
+        "isa": "rv64imafdc_zicsr_zifencei",
+        "mabi": "lp64d",
+        "initial_state": {
+          "entry": "_start",
+          "privilege": "machine"
+        },
+        "sequence": [
+          "riscv_rand_instr_test"
+        ],
+        "generation_profile": {
+          "route": "program",
+          "source": "riscv-dv",
+          "target": "rv64imafdc",
+          "custom_target": "target/rv64imafdc",
+          "test": "riscv_rand_instr_test",
+          "testlist": "/opt/rq1/comparison/framework/evidence/rvgen-rq1-rvdv-testlist.yaml",
+          "isa": "rv64imafdc_zicsr_zifencei",
+          "mabi": "lp64d",
+          "iterations": 1
+        },
+        "generation_identity_digest": "runtime"
+      },
+      "reference": {
+        "backend": "native-rv64",
+        "target": "T-K1-BOARD",
+        "runner_path": "framework/native/rv64_runner.py",
+        "identity_resolution": "runtime",
+        "expected": {"status": "recorded"},
+        "fallback": {
+          "backend": "qemu-riscv64",
+          "target_id": "T-QEMU",
+          "on": ["k1-timeout", "k1-transport-unavailable"],
+          "selection_scope": "whole-campaign"
+        }
+      },
+      "target": {
+        "backend": "qemu-riscv64",
+        "identity_resolution": "runtime",
+        "expected": {
+          "status": "normal"
+        }
+      },
+      "observer": {
+        "fields": [
+          "executed_pcs",
+          "outcome"
+        ],
+        "semantic_witness": "dynamic program-test path"
+      },
+      "path": "framework/evidence/rvgen-rq1-program.S"
+    }
+  ]
+}

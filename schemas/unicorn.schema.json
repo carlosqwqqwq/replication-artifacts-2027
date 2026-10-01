@@ -1,0 +1,25 @@
+{
+  "$id": "https://example.invalid/vernier/observation-unicorn-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "observation-v1.schema.json"
+    },
+    {
+      "properties": {
+        "backend": {
+          "const": "unicorn-riscv64"
+        }
+      },
+      "type": "object"
+    }
+  ],
+  "title": "Vernier unicorn observation schema",
+  "x-libriscv-modes": [],
+  "x-target": {
+    "backend": "unicorn-riscv64",
+    "coverage": "gcov LCOV",
+    "termination": "tohost/ebreak/ecall with mailbox",
+    "trace": "UC_HOOK_CODE per-test PC trace"
+  }
+}

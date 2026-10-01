@@ -1,0 +1,25 @@
+{
+  "$id": "https://example.invalid/vernier/observation-qemu-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "observation-v1.schema.json"
+    },
+    {
+      "properties": {
+        "backend": {
+          "const": "qemu-riscv64"
+        }
+      },
+      "type": "object"
+    }
+  ],
+  "title": "Vernier qemu observation schema",
+  "x-libriscv-modes": [],
+  "x-target": {
+    "backend": "qemu-riscv64",
+    "coverage": "gcov LCOV",
+    "termination": "Linux exit or validated guest trap",
+    "trace": "QEMU execlog plugin; per-test qemu.log"
+  }
+}

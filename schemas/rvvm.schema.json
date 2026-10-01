@@ -1,0 +1,25 @@
+{
+  "$id": "https://example.invalid/vernier/observation-rvvm-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "observation-v1.schema.json"
+    },
+    {
+      "properties": {
+        "backend": {
+          "const": "rvvm-riscv64"
+        }
+      },
+      "type": "object"
+    }
+  ],
+  "title": "Vernier rvvm observation schema",
+  "x-libriscv-modes": [],
+  "x-target": {
+    "backend": "rvvm-riscv64",
+    "coverage": "gcov LCOV with stop-flush marker",
+    "termination": "tohost/RVOBS1, trap or transport gap",
+    "trace": "stepcov or GDB-RSP PC/state trace"
+  }
+}

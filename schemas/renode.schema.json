@@ -1,0 +1,25 @@
+{
+  "$id": "https://example.invalid/vernier/observation-renode-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "observation-v1.schema.json"
+    },
+    {
+      "properties": {
+        "backend": {
+          "const": "renode-riscv64"
+        }
+      },
+      "type": "object"
+    }
+  ],
+  "title": "Vernier renode observation schema",
+  "x-libriscv-modes": [],
+  "x-target": {
+    "backend": "renode-riscv64",
+    "coverage": "dotnet-coverage Cobertura converted to LCOV",
+    "termination": "tohost, RVOBS1 or explicit exception",
+    "trace": "Renode native PC trace; per-test text artifact"
+  }
+}

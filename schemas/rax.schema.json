@@ -1,0 +1,25 @@
+{
+  "$id": "https://example.invalid/vernier/observation-rax-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "observation-v1.schema.json"
+    },
+    {
+      "properties": {
+        "backend": {
+          "const": "rax-riscv64"
+        }
+      },
+      "type": "object"
+    }
+  ],
+  "title": "Vernier rax observation schema",
+  "x-libriscv-modes": [],
+  "x-target": {
+    "backend": "rax-riscv64",
+    "coverage": "LLVM profraw merged to LCOV",
+    "termination": "tohost/RVOBS1 or explicit guest trap",
+    "trace": "RAX --trace per-test PC trace"
+  }
+}
