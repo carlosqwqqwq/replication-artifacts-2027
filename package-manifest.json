@@ -1,7 +1,9 @@
 {
-  "analysis_script_count": 30,
+  "analysis_script_count": 13,
   "anonymization_substitutions": "host-specific absolute paths are rewritten to /path/to/* placeholders",
   "anonymized_url": "PENDING_GITHUB_REPOSITORY_URL_FOR_ANONYMOUS_4OPEN_SCIENCE",
+  "copied_script_count": 30,
+  "experiment_support_script_count": 17,
   "files": {
     "analysis": [
       {
@@ -766,6 +768,7 @@
   "release_blockers": [
     "event_id join for the 103 event rows is pending; current crosswalk supplies issue-point counts and reproducers",
     "upstream issue/PR URLs are not present for the 27 Direct issue points",
+    "per-test raw profile payloads and the full per-test index are not yet hosted",
     "anonymous.4open.science mirror URL is pending GitHub OAuth authorization"
   ],
   "rvt_bench": {
