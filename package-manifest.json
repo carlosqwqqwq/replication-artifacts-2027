@@ -1,7 +1,7 @@
 {
   "analysis_script_count": 13,
   "anonymization_substitutions": "host-specific absolute paths are rewritten to /path/to/* placeholders",
-  "anonymized_url": "PENDING_GITHUB_REPOSITORY_URL_FOR_ANONYMOUS_4OPEN_SCIENCE",
+  "anonymized_url": "PENDING_ANONYMOUS_4OPEN_SCIENCE_URL",
   "copied_script_count": 30,
   "experiment_support_script_count": 17,
   "files": {
