@@ -1,1 +1,2 @@
-PENDING: provide the public GitHub repository URL, then create the anonymous.4open.science mirror.
+Source repository: https://github.com/carlosqwqqwq/replication-artifacts-2027
+Anonymous mirror: PENDING GitHub OAuth authorization at https://anonymous.4open.science/

@@ -766,7 +766,7 @@
   "release_blockers": [
     "event_id join for the 103 event rows is pending; current crosswalk supplies issue-point counts and reproducers",
     "upstream issue/PR URLs are not present for the 27 Direct issue points",
-    "a GitHub source repository URL is required before anonymous.4open.science can create a mirror"
+    "anonymous.4open.science mirror URL is pending GitHub OAuth authorization"
   ],
   "rvt_bench": {
     "defects": 27,
@@ -782,6 +782,7 @@
     "rvvm"
   ],
   "source_dirty_at_build": true,
+  "source_repository_url": "https://github.com/carlosqwqqwq/replication-artifacts-2027",
   "source_revision": "a612b2b2d4dbfe71107d8886953a2fd206b61bff",
   "source_tree": "rq1-comparison",
   "target_lanes": [

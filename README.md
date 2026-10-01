@@ -8,7 +8,7 @@ The current Direct crosswalk has **27 unique root-cause behavior points** and **
 
 ## Missing publication metadata
 
-`event_id` joins and upstream issue/PR URLs are explicitly marked pending where the current crosswalk does not provide them. Do not fill them with guessed URLs. `ANONYMIZED_URL.txt` remains pending until a public GitHub source URL is supplied.
+`event_id` joins and upstream issue/PR URLs are explicitly marked pending where the current crosswalk does not provide them. Do not fill them with guessed URLs. The public source repository is listed in `ANONYMIZED_URL.txt`; the anonymous mirror still needs the GitHub OAuth step.
 
 ## Large data
 
